@@ -2,6 +2,7 @@ import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import CreateFlashCard from "./Pages/CreateFlashCard";
 import ErrorPage from "./Pages/ErrorPage";
 import HomePage from "./Pages/HomePage";
+import MyFlashCards from "./Pages/MyFlashCards";
 
 
 function App() {
@@ -15,14 +16,14 @@ function App() {
           element: <CreateFlashCard></CreateFlashCard>,
         },
         {
-          path: "/MyFlashCards",
+          path:'/MyFlashCards',
           element: <MyFlashCards></MyFlashCards>,
         }
         // {
         //   path:'/MyFlashCards/:index',
         //   element:<FlashCardDetails></FlashCardDetails>
         // }
-      ],
+      ]
     }
   
   ]);

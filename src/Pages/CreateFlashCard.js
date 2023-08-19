@@ -93,9 +93,9 @@ function CreateFlashCard() {
                 {/* GroupName label and input */}
                 <div className="groupName   flex flex-col  justify-start px-[0.2%] py-[0.2%] mx-[0.2%]  my-[1%] basis-[50%]  transition-all">
                   {/* grouplabel */}
-                  <label className="pl-1 py-1  w-[99.8%] text-xs md:text-base lg:text-xl transition-all  font-bold">
+                  <label className="pl-1 py-1  w-[99.8%] text-xs md:text-base lg:text-xl transition-all  font-normal">
                     Group Name{" "}
-                    <span className="text-red-500 font-bold  ">*</span>
+                    <span className="text-red-500 font-normal  ">*</span>
                   </label>
 
                   {/* groupInput */}
@@ -105,7 +105,7 @@ function CreateFlashCard() {
                     name="Group"
                   ></Field>
                   <ErrorMessage
-                    className="text-red-500 font-bold text-[10px] text-xs sm:text-sm"
+                    className="text-red-500 font-normal text-[10px] text-xs sm:text-sm"
                     component={Error}
                     name="Group"
                   ></ErrorMessage>
@@ -120,7 +120,7 @@ function CreateFlashCard() {
                   <label
                     className={` ${
                       values.deckImage ? "hidden" : ""
-                    } text-transparent pl-1 py-1  text-xs md:text-base lg:text-xl transition-all  font-bold`}
+                    } text-transparent pl-1 py-1  text-xs md:text-base lg:text-xl transition-all  font-normal`}
                   >
                     sfsfsfs
                   </label>
@@ -151,7 +151,7 @@ function CreateFlashCard() {
                         <span className="pt-[3px] text-xs md:text-base lg:text-xl mx-[1%] text-blue-700 font-extrabold group-hover:text-inherit">
                           <FiUpload></FiUpload>
                         </span>
-                        <span className="text-[12px] md:text-base lg:text-lg font-bold text-blue-700 group-hover:text-inherit">
+                        <span className="text-[12px] md:text-base lg:text-lg font-normal text-blue-700 group-hover:text-inherit">
                           Upload
                         </span>
                       </span>
@@ -162,7 +162,7 @@ function CreateFlashCard() {
                 {/* group description and label  */}
                 <div className="groupName  flex flex-col px-[0.2%] py-[0.2%] mx-1  my-1  transition-all basis-[80%] md:basis-[60%]">
                   {/* description label */}
-                  <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all  font-bold ml-1">
+                  <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all  font-normal ml-1">
                     Group Description
                   </label>
 
@@ -174,7 +174,7 @@ function CreateFlashCard() {
                     placeholder="Enter Group Description"
                   ></Field>
                   <ErrorMessage
-                    className="text-red-500 font-bold text-[10px] text-xs sm:text-sm"
+                    className="text-red-500 font-normal text-[10px] text-xs sm:text-sm"
                     component={Error}
                     name="Description"
                   ></ErrorMessage>
@@ -221,15 +221,15 @@ function CreateFlashCard() {
                         key={index}
                       >
                         {/* index */}
-                        <h1 className=" w-4 h-4 shrink-0 mt-[2%] basis-[3.5%] bg-blue-400 px-1 py-1 rounded-full flex items-center justify-center    text-[10px] sm:text-[14px] md:text-[16xpx] lg:text-[20px]  font-bold transtion-all sm:w-6 sm:h-6 md:w-8 md:h-8  lg:w-10 lg:h-10">
+                        <h1 className=" w-4 h-4 shrink-0 mt-[2%] basis-[3.5%] bg-blue-400 px-1 py-1 rounded-full flex items-center justify-center    text-[10px] sm:text-[14px] md:text-[16xpx] lg:text-[20px]  font-normal transtion-all sm:w-6 sm:h-6 md:w-8 md:h-8  lg:w-10 lg:h-10">
                           {index + 1}
                         </h1>
 
                         {/*term name input*/}
                         <div className="  basis-[40%] lg:basis-[25%] flex flex-col px-[0.5%]   py-[0.5%]    overflow-hidden ">
-                          <label className="pl-1 py-1 text-xs md:text-base lg:text-xl transition-all  font-bold">
+                          <label className="pl-1 py-1 text-xs md:text-base lg:text-xl transition-all  font-normal">
                             Term Name{" "}
-                            <span className="text-red-500 font-bold font-normal ">*</span>
+                            <span className="text-red-500 font-normal font-normal ">*</span>
                           </label>
 
                           <Field name={`Terms[${index}].Term`}>
@@ -248,15 +248,15 @@ function CreateFlashCard() {
                           <ErrorMessage
                             name={`Terms[${index}].Term`}
                             component={Error}
-                            className="text-red-500 font-bold text-[10px] text-xs sm:text-sm"
+                            className="text-red-500 font-normal text-[10px] text-xs sm:text-sm"
                           ></ErrorMessage>
                         </div>
 
                         {/* term description above lg */}
                         <div className=" basis-[60%] lg:basis-[50%]   flex-col  hidden  lg:flex  pl-[3%] py-[0.5%]     ">
-                          <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all  font-bold">
+                          <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all  font-normal">
                             Term Definition{" "}
-                            <span className="text-red-500 font-bold font-normal ">*</span>
+                            <span className="text-red-500 font-normal font-normal ">*</span>
                           </label>
                           <Field
                             as="textarea"
@@ -267,7 +267,7 @@ function CreateFlashCard() {
                           <ErrorMessage
                             name={`Terms[${index}].definition`}
                             component={Error}
-                            className="text-red-500 font-bold text-[10px] text-xs sm:text-sm"
+                            className="text-red-500 font-normal text-[10px] text-xs sm:text-sm"
                           ></ErrorMessage>
 
                           {/* termImage input hidden  */}
@@ -361,7 +361,7 @@ function CreateFlashCard() {
                               values.Terms.length > 0
                                 ? " hidden "
                                 : ``
-                            }  text-transparent pl-1 py-1  text-xs md:text-base lg:text-xl transition-all  font-bold`}
+                            }  text-transparent pl-1 py-1  text-xs md:text-base lg:text-xl transition-all  font-normal`}
                           >
                             <span className=" text-transparent font-normal ">
                               *
@@ -393,7 +393,7 @@ function CreateFlashCard() {
                                 <span className="pt-[3px] text-xs md:text-base lg:text-xl  mx-[3%] text-blue-700 group-hover:text-inherit">
                                   <FiUpload></FiUpload>
                                 </span>
-                                <span className="text-[12px]  md:text-base lg:text-lg font-bold text-blue-700 group-hover:text-inherit ">
+                                <span className="text-[12px]  md:text-base lg:text-lg font-normal text-blue-700 group-hover:text-inherit ">
                                   Upload
                                 </span>
                               </span>
@@ -467,9 +467,9 @@ function CreateFlashCard() {
 
                         {/* term description below lg */}
                         <div className="  basis-[90%]  flex flex-col   lg:hidden ml-[3%] pl-[3%] py-[0.5%]     sm:pl-[1%]  ">
-                          <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all  font-bold">
+                          <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all  font-normal">
                             Term Definition{" "}
-                            <span className="text-red-500 font-bold font-normal ">*</span>
+                            <span className="text-red-500 font-normal font-normal ">*</span>
                           </label>
                           <Field
                             as="textarea"
@@ -480,7 +480,7 @@ function CreateFlashCard() {
                           <ErrorMessage
                             name={`Terms[${index}].definition`}
                             component={Error}
-                            className="text-red-500 font-bold text-[10px] text-xs sm:text-sm"
+                            className="text-red-500 font-normal text-[10px] text-xs sm:text-sm"
                           ></ErrorMessage>
 
                           {/* termImage input hidden  */}
@@ -519,7 +519,7 @@ function CreateFlashCard() {
                     {/* addmore button */}
                     <div>
                       <button
-                        className=" ml-[2%] mx-1 my-1  px-[0.4%] py-[0.4%] text-blue-500 font-bold text-[12px]  hover:scale-[120%] md:text-base lg:text-xl transition-all duration-250   -110   hover:text-blue-700 "
+                        className=" ml-[2%] mx-1 my-1  px-[0.4%] py-[0.4%] text-blue-500 font-normal text-[12px]  hover:scale-[120%] md:text-base lg:text-xl transition-all duration-250   -110   hover:text-blue-700 "
                         type="button"
                         onClick={() => {
                           push({ Term: "", definition: "", image: null });
