@@ -1,14 +1,16 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
-// localStorage.setItem('Decks','[]')
+
 
 const deckSlice = createSlice({
   name: "deckSlice",
   initialState: localStorage.getItem("Decks") ? JSON.parse(localStorage.getItem("Decks")):[],
   reducers: {
     deckDetailsAdd(state, action) {
+      localStorage.setItem('Decks',"[]")
       console.log("inside deck reducer")
       console.log(action.payload);
+    
       state.push(action.payload);
       const Decks=JSON.parse(localStorage.getItem('Decks'))
       const newDecks=[...Decks,action.payload]
