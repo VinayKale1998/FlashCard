@@ -278,7 +278,7 @@ function CreateFlashCard() {
                               (fileRefs.current[index] = element)
                             }
                             type="file"
-                            accept=".png,jpg,jpeg"
+                            accept=".png,.jpeg,.jpg,.jpeg"
                             onChange={(event) => {
                               if (event.target.files[0]) {
                                 if (event.target.files[0].size > 1097152) {
@@ -496,7 +496,7 @@ function CreateFlashCard() {
                               (fileRefs.current[index] = element)
                             }
                             type="file"
-                            accept=".png,jpg,jpeg"
+                            accept=".png,.jpeg,.jpg,.jpeg"
                             onChange={(event) => {
                               if (event.target.files[0]) {
                                 if (event.target.files[0].size > 1097152) {
