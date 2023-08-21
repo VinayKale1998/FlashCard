@@ -4,15 +4,18 @@ import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 const deckSlice = createSlice({
   name: "deckSlice",
-  initialState: [],
+  initialState: localStorage.getItem("Decks") ? JSON.parse(localStorage.getItem("Decks")):[],
   reducers: {
     deckDetailsAdd(state, action) {
+      console.log("inside deck reducer")
       console.log(action.payload);
       state.push(action.payload);
+      const Decks=JSON.parse(localStorage.getItem('Decks'))
+      const newDecks=[...Decks,action.payload]
+      localStorage.setItem('Decks',newDecks)
     },
 
-    add() {},
-    subtract() {},
+   
   },
 });
 
@@ -34,7 +37,7 @@ const termsSlice = createSlice({
   },
 });
 
-const store = configureStore({ reducer: { deck: termsSlice.reducer } });
+const store = configureStore({ reducer: { deck: deckSlice.reducer } });
 
 export default store;
 

@@ -1,6 +1,7 @@
 import React from "react";
 import CreateFlashCard from "./CreateFlashCard";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import MyFlashCards from "./MyFlashCards";
 
 function HomePage() {
   return (
@@ -32,7 +33,7 @@ function HomePage() {
             to="/MyFlashCards"
             className={({ isActive }) =>
               isActive
-                ? "text-lg font-sans sm:text-1xl ml-10 md:text-2xl mx-3 my-1   hover:text-blue  transition-all"
+                ? "text-lg font-sans sm:text-1xl ml-10  scale-105 text-blue-600 md:text-2xl mx-3 my-1   hover:text-blue  transition-all"
                 : "text-lg font-sans  sm:text-1xl ml-10 md:text-2xl   mx-3 my-1  hover:text-blue  transition-all"
             }
           >
@@ -41,7 +42,7 @@ function HomePage() {
         </div>
       </nav>
 
-      <CreateFlashCard></CreateFlashCard>
+      <Outlet></Outlet>
     </div>
   );
 }

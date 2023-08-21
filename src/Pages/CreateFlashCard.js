@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Error from "../Components/Error";
 import * as Yup from "yup";
 import PreviewImage from "../Components/PreviewImage";
+import { deckActions } from "../Store";
 
 const initialState = {
   Group: "",
@@ -20,8 +21,9 @@ function CreateFlashCard() {
   const fileRefs = useRef([]);
   const focusRefs = useRef([]);
   const deckRef = useRef();
+  const dispatch= useDispatch();
 
-  // const terms = useSelector((state) => state.terms);
+  // const terms = useSelector((state) => state.deck);
 
   // const [image, setImage] = React.useState(false);
 
@@ -37,16 +39,14 @@ function CreateFlashCard() {
     <Formik
       initialValues={initialState}
       onSubmit={(values, { resetForm }) => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            return resolve;
-          }, 4000);
-        });
+        console.log("inside formk submit")
+        dispatch(deckActions.deckDetailsAdd(values));
+        resetForm();
       }}
       validationSchema={Yup.object({
         Group: Yup.string()
           .required("This Field is required")
-          .min(2, "Group Name needs to be atleast 4 characters")
+          .min(4, "Group Name needs to be atleast 4 characters")
           .max(15, "Group name must be of less than 15 chars"),
         Description: Yup.string()
           .required()
@@ -57,11 +57,12 @@ function CreateFlashCard() {
             Term: Yup.string()
               .required("TermName is required")
               .min(4, "Term must contain 3 chars at minimum")
-              .max(8, "Term cannot contain more than 8 characters"),
+              .max(15, "Term cannot contain more than 15 characters"),
             definition: Yup.string()
               .required("Term Description is required")
-              .min(10, "Term must contain 10 chars at  minimum")
+              .min(5, "Term must contain at least 5 characters")
               .max(400, "Term must contain 400 chars at max"),
+              image:Yup.string().required("Image is required")
           })
         )
           .min(1)
@@ -89,23 +90,23 @@ function CreateFlashCard() {
               </div>
 
               {/* first form */}
-              <section className="  flex flex-wrap first-form bg-[white] my-4 py- px-1  mx-[2%]     sm:mx-[5%] md:mx-[6%] lg:mx-[6%]   transition-all border border-gray-400  border-separate shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+              <section className="  flex flex-wrap first-form bg-[white] my-4 py- px-1  mx-[2%]     sm:mx-[5%] md:mx-[6%] lg:mx-[6%]   transition-all border border-black  border-separate shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
                 {/* GroupName label and input */}
                 <div className="groupName   flex flex-col  justify-start px-[0.2%] py-[0.2%] mx-[0.2%]  my-[1%] basis-[50%]  transition-all">
                   {/* grouplabel */}
-                  <label className="pl-1 py-1  w-[99.8%] text-xs md:text-base lg:text-xl transition-all  font-normal">
+                  <label className="pl-1 py-1  w-[99.8%] text-xs md:text-base lg:text-xl transition-all   ">
                     Group Name{" "}
-                    <span className="text-red-500 font-normal  ">*</span>
+                    <span className=" text-red-500  md:text-lg   ">*</span>
                   </label>
 
                   {/* groupInput */}
                   <Field
-                    className=" focus:border-2   focus:border-blue-400 bg-white px-1 py-1 x  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  text-[12px]  md:text-base lg:text-xl transition-all outline-none hover:border-1       border border-gray-400 "
+                    className=" focus:border-2 placeholder:text-base    focus:border-blue-400 bg-white px-1 py-1 x  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  text-[12px]  md:text-base lg:text-xl transition-all outline-none hover:border-1       border border-black "
                     placeholder="Enter Group Name"
                     name="Group"
                   ></Field>
                   <ErrorMessage
-                    className="text-red-500 font-normal text-[10px] text-xs sm:text-sm"
+                    className=" text-red-500  md:text-lg  text-[10px] text-xs sm:text-sm"
                     component={Error}
                     name="Group"
                   ></ErrorMessage>
@@ -120,7 +121,7 @@ function CreateFlashCard() {
                   <label
                     className={` ${
                       values.deckImage ? "hidden" : ""
-                    } text-transparent pl-1 py-1  text-xs md:text-base lg:text-xl transition-all  font-normal`}
+                    } text-transparent pl-1 py-1  text-xs md:text-base lg:text-xl transition-all   `}
                   >
                     sfsfsfs
                   </label>
@@ -130,7 +131,7 @@ function CreateFlashCard() {
                       values.deckImage
                         ? "px-0  hover:bg-transparent w-24 sm:w-36 md:w-36 h-auto py-0 "
                         : "w-28 px-2 py-1"
-                    } border border-gray-400  group shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] flex space-x-1 bg-white  x   transition-all outline-none hover:border-1       -110   items-center self-stretch `}
+                    } border border-black group shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] flex space-x-1 bg-blue-500   hover:bg-blue-900  transition-all outline-none hover:border-1     items-center self-stretch `}
                     disabled={isSubmitting}
                     type="button"
                     onClick={() => {
@@ -147,11 +148,11 @@ function CreateFlashCard() {
                       />
                     )}
                     {!values.deckImage && (
-                      <span className="flex ">
-                        <span className="pt-[3px] text-xs md:text-base lg:text-xl mx-[1%] text-blue-700 font-extrabold group-hover:text-inherit">
+                      <span className="flex  ">
+                        <span className="pt-[3px] text-xs md:text-base lg:text-xl mx-[1%]  text-white     ">
                           <FiUpload></FiUpload>
                         </span>
-                        <span className="text-[12px] md:text-base lg:text-lg font-normal text-blue-700 group-hover:text-inherit">
+                        <span className="text-[12px] md:text-base lg:text-lg    text-white   ">
                           Upload
                         </span>
                       </span>
@@ -162,7 +163,7 @@ function CreateFlashCard() {
                 {/* group description and label  */}
                 <div className="groupName  flex flex-col px-[0.2%] py-[0.2%] mx-1  my-1  transition-all basis-[80%] md:basis-[60%]">
                   {/* description label */}
-                  <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all  font-normal ml-1">
+                  <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all    ml-1">
                     Group Description
                   </label>
 
@@ -170,11 +171,11 @@ function CreateFlashCard() {
                   <Field
                     as="textarea"
                     name="Description"
-                    className="   focus:border-2 focus:border-blue-400 border border-gray-400 bg-white overflow-hidden   my-1 px-1 py-1 x    text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all outline-none hover:border-1      "
+                    className="   focus:border-2 placeholder:text-base focus:border-blue-400 border border-black bg-white overflow-hidden   my-1 px-1 py-1 x    text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all outline-none hover:border-1      "
                     placeholder="Enter Group Description"
                   ></Field>
                   <ErrorMessage
-                    className="text-red-500 font-normal text-[10px] text-xs sm:text-sm"
+                    className=" text-red-500  md:text-lg  text-[10px] text-xs sm:text-sm"
                     component={Error}
                     name="Description"
                   ></ErrorMessage>
@@ -212,7 +213,7 @@ function CreateFlashCard() {
               {/* second formx */}
               <FieldArray name="Terms">
                 {({ push, remove }) => (
-                  <section className=" mt-[2%] second-formb bg-[white] border border-gray-400  my-[0.5%] py-1 px-1 mx-[2%]    flex flex-col sm:mx-[5%] md:mx-[6%] lg:mx-[6%]  transition-all shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+                  <section className=" mt-[2%] second-formb bg-[white] border border-black my-[0.5%] py-1 px-1 mx-[2%]    flex flex-col sm:mx-[5%] md:mx-[6%] lg:mx-[6%]  transition-all shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
                     {/* single term input */}
 
                     {values.Terms.map((item, index) => (
@@ -221,22 +222,22 @@ function CreateFlashCard() {
                         key={index}
                       >
                         {/* index */}
-                        <h1 className=" w-4 h-4 shrink-0 mt-[2%] basis-[3.5%] bg-blue-400 px-1 py-1 rounded-full flex items-center justify-center    text-[10px] sm:text-[14px] md:text-[16xpx] lg:text-[20px]  font-normal transtion-all sm:w-6 sm:h-6 md:w-8 md:h-8  lg:w-10 lg:h-10">
+                        <h1 className=" w-4 h-4 shrink-0 mt-[2%] basis-[3.5%] bg-blue-600 text-white px-1 py-1 rounded-full flex items-center justify-center    text-[10px] sm:text-[14px] md:text-[16xpx] lg:text-[20px]    transtion-all sm:w-6 sm:h-6 md:w-8 md:h-8  lg:w-10 lg:h-10">
                           {index + 1}
                         </h1>
 
                         {/*term name input*/}
                         <div className="  basis-[40%] lg:basis-[25%] flex flex-col px-[0.5%]   py-[0.5%]    overflow-hidden ">
-                          <label className="pl-1 py-1 text-xs md:text-base lg:text-xl transition-all  font-normal">
+                          <label className="pl-1 py-1 text-xs md:text-base lg:text-xl transition-all   ">
                             Term Name{" "}
-                            <span className="text-red-500 font-normal font-normal ">*</span>
+                            <span className=" text-red-500  md:text-lg   ">*</span>
                           </label>
 
                           <Field name={`Terms[${index}].Term`}>
                             {({ field, form, meta }) => (
                               <input
                                 {...field}
-                                className=" focus:border-2 focus:border-blue-400   border border-gray-400  px-1 py-1  bg-white text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  md:text-base lg:text-xl transition-all  hover:border-1      outline-none"
+                                className=" focus:border-2 focus:border-blue-400   placeholder:text-base border border-black px-1 py-1  bg-white text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  md:text-base lg:text-xl transition-all  hover:border-1      outline-none"
                                 ref={(element) =>
                                   (focusRefs.current[index] = element)
                                 }
@@ -248,26 +249,26 @@ function CreateFlashCard() {
                           <ErrorMessage
                             name={`Terms[${index}].Term`}
                             component={Error}
-                            className="text-red-500 font-normal text-[10px] text-xs sm:text-sm"
+                            className=" text-red-500  md:text-lg  text-[10px] text-xs sm:text-sm"
                           ></ErrorMessage>
                         </div>
 
                         {/* term description above lg */}
                         <div className=" basis-[60%] lg:basis-[50%]   flex-col  hidden  lg:flex  pl-[3%] py-[0.5%]     ">
-                          <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all  font-normal">
+                          <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all   ">
                             Term Definition{" "}
-                            <span className="text-red-500 font-normal font-normal ">*</span>
+                            <span className=" text-red-500  md:text-lg   ">*</span>
                           </label>
                           <Field
                             as="textarea"
                             name={`Terms[${index}].definition`}
-                            className=" focus:border-2 focus:border-blue-400 border border-gray-400 py-1 bg-white    px-1 text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all overflow-hidden hover:border-1      outline-none"
+                            className=" focus:border-2 focus:border-blue-400  overflow-hidden placeholder:text-base border border-black py-1 bg-white    px-1 text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all  hover:border-1      outline-none"
                             placeholder="Enter Term Description"
                           ></Field>
                           <ErrorMessage
                             name={`Terms[${index}].definition`}
                             component={Error}
-                            className="text-red-500 font-normal text-[10px] text-xs sm:text-sm"
+                            className=" text-red-500  md:text-lg  text-[10px] text-xs sm:text-sm"
                           ></ErrorMessage>
 
                           {/* termImage input hidden  */}
@@ -361,9 +362,9 @@ function CreateFlashCard() {
                               values.Terms.length > 0
                                 ? " hidden "
                                 : ``
-                            }  text-transparent pl-1 py-1  text-xs md:text-base lg:text-xl transition-all  font-normal`}
+                            }  text-transparent pl-1 py-1  text-xs md:text-base lg:text-xl transition-all   `}
                           >
-                            <span className=" text-transparent font-normal ">
+                            <span className=" text-transparent   ">
                               *
                             </span>
                           </label>
@@ -373,7 +374,7 @@ function CreateFlashCard() {
                               values.Terms[index].image
                                 ? "px-0  hover:bg-transparent hover:border-white   py-0  "
                                 : " "
-                            }   border border-gray-400  group shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] flex space-x-1 bg-white    transition-all outline-none hover:border-1     hover:text-white  items-center  justify-center `}
+                            }   border border-black  group shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] flex space-x-1 bg-white    transition-all outline-none hover:border-1     hover:text-white  items-center  justify-center `}
                             disabled={isSubmitting}
                             type="button"
                             onClick={() => {
@@ -390,10 +391,10 @@ function CreateFlashCard() {
                               />
                             ) : (
                               <span className="flex ">
-                                <span className="pt-[3px] text-xs md:text-base lg:text-xl  mx-[3%] text-blue-700 group-hover:text-inherit">
+                                <span className="pt-[3px] text-xs md:text-base lg:text-xl  mx-[3%] text-blue-700 ">
                                   <FiUpload></FiUpload>
                                 </span>
-                                <span className="text-[12px]  md:text-base lg:text-lg font-normal text-blue-700 group-hover:text-inherit ">
+                                <span className="text-[12px]  md:text-base lg:text-lg   text-blue-700  ">
                                   Upload
                                 </span>
                               </span>
@@ -432,7 +433,7 @@ function CreateFlashCard() {
                           </div>
 
                           <button
-                            className="px-[2%] py-[2%] mx-1 my-1 w-24 sm:w-36 md:w-36 bg-white   flex justify-center items-center   border border-gray-500  transition-all "
+                            className={`${values.Terms[index].image?"":" bg-blue-500  borderborder-black hover:bg-blue-900 "} px-[2%] py-[2%] mx-1 my-1 w-24 sm:w-36 md:w-36   flex justify-center items-center   transition-all `}
                             onClick={() => {
                               fileRefs.current[index].click();
                               if (values.Terms[index].image) {
@@ -454,33 +455,38 @@ function CreateFlashCard() {
                             )}
                             {!values.Terms[index].image && (
                               <span className=" flex  flex-row items-center ">
-                                <span className=" px-1  sm:text-sm md:text-md lg:text-lg xl:text-xl text-sm  text-blue-700 ">
+                                <span className=" px-1  sm:text-sm md:text-md lg:text-lg xl:text-xl text-sm   text-white   ">
                                   <FiUpload></FiUpload>
                                 </span>
-                                <span className=" pr-1 sm:text-sm md:text-md lg:text-lg xl:text-xl text-sm  text-blue-700 font-semibold ">
+                                <span className=" pr-1 sm:text-sm md:text-md lg:text-lg xl:text-xl text-sm   text-white    ">
                                   Upload
                                 </span>
                               </span>
                             )}
                           </button>
+                          <ErrorMessage
+                            name={`Terms[${index}].image`}
+                            component={Error}
+                            className=" text-red-500  md:text-lg  text-[10px] text-xs sm:text-sm"
+                          ></ErrorMessage>
                         </div>
 
                         {/* term description below lg */}
                         <div className="  basis-[90%]  flex flex-col   lg:hidden ml-[3%] pl-[3%] py-[0.5%]     sm:pl-[1%]  ">
-                          <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all  font-normal">
+                          <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all   ">
                             Term Definition{" "}
-                            <span className="text-red-500 font-normal font-normal ">*</span>
+                            <span className=" text-red-500  md:text-lg  ">*</span>
                           </label>
                           <Field
                             as="textarea"
                             name={`Terms[${index}].definition`}
-                            className=" focus:border-2 focus:border-blue-400 border border-gray-400 py-1 bg-white    px-1 text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all overflow-hidden hover:border-1      outline-none"
+                            className=" focus:border-2 placeholder:text-base focus:border-blue-400 border border-black py-1 bg-white    px-1 text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all overflow-hidden hover:border-1      outline-none"
                             placeholder="Enter Term Description"
                           ></Field>
                           <ErrorMessage
                             name={`Terms[${index}].definition`}
                             component={Error}
-                            className="text-red-500 font-normal text-[10px] text-xs sm:text-sm"
+                            className=" text-red-500  md:text-lg  text-[10px] text-xs sm:text-sm"
                           ></ErrorMessage>
 
                           {/* termImage input hidden  */}
@@ -502,7 +508,7 @@ function CreateFlashCard() {
                                   reader.readAsDataURL(event.target.files[0]);
                                   reader.onload = () => {
                                     console.log("inside load");
-                                    console.log(reader.result);
+                                    // console.log(reader.result);
                                     setFieldValue(
                                       `Terms[${index}].image`,
                                       reader.result
@@ -519,7 +525,7 @@ function CreateFlashCard() {
                     {/* addmore button */}
                     <div>
                       <button
-                        className=" ml-[2%] mx-1 my-1  px-[0.4%] py-[0.4%] text-blue-500 font-normal text-[12px]  hover:scale-[120%] md:text-base lg:text-xl transition-all duration-250   -110   hover:text-blue-700 "
+                        className=" ml-[2%] mx-1 my-1  px-[0.4%] py-[0.4%] text-blue-500   text-[12px]  hover:scale-[120%] md:text-base lg:text-xl transition-all duration-250   -110   hover:text-blue-700 "
                         type="button"
                         onClick={() => {
                           push({ Term: "", definition: "", image: null });
@@ -532,15 +538,15 @@ function CreateFlashCard() {
                 )}
               </FieldArray>
 
-              {/* <div>
-                <pre>{JSON.stringify({ values, errors }, null, 4)}</pre>
+              <div>
+                {/* <pre>{JSON.stringify({ values, errors }, null, 4)}</pre> */}
                 <button
                   type="submit"
-                  className="py-2 px-6 rounded-sm bg-blue-400 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  ml-[40%]  text-base  sm:text-xl  md:text-2xl  transition-all text-white hover:bg-blue-400 hover:text-white  flex  "
+                  className="py-2 px-6 rounded-sm hover:scale-110 bg-blue-700 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  ml-[40%]  text-base  sm:text-xl  md:text-2xl  transition-all text-white hover:text-white  flex  "
                 >
-                  Submit
+                  Create
                 </button>
-              </div> */}
+              </div>
             </div>
           </div>
         </Form>

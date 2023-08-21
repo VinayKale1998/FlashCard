@@ -4,8 +4,6 @@ import { NavLink, Link } from "react-router-dom";
 import React from "react";
 import PreviewImage from "../Components/PreviewImage";
 
-
-
 const MyFlashCards = () => {
   const decks = useSelector((state) => {
     const json = JSON.stringify(state.deck);
@@ -15,67 +13,60 @@ const MyFlashCards = () => {
   });
 
   return (
-    //excessive margin added here
-    <div className="main  mt-5 my-1  grid grid-cols-3 w-12/12 mb-96 pb-28 relative h-full ">
-      <div
-        className="   absolute left-[35%] top-[50%]  bg-white Empty px-2 py-2 mx-1 my-1 w-[38%] h-[150%] rounded-md flex flex-col space-y-8 "
-      >
-        {" "}
-        <span className="text-3xl font-bold text-White  px-1 py-1 bg-red-400 pl-8 relative">
-          No Flashcards created yet
-        </span>
-        
-        <span className="text-3xl font-bold text-White  px-1 py-1 bg-red-400 pl-8 relative">
-          Cick below to create a Flashcard
-        </span>
-        
-        <div  className="bg-purple-700  text-white px-2 py-1 pl-7 rounded-lg ml-10 w-[50% ] max-w-[50%] absolute left-[20%]  top-24">
-          <Link
-            to=".."
-            relative="path"
-           className="text-white  w-[50%] max-w-[50%] "
-          >
-            Create Flashcard
-          </Link>
-        </div>
-      </div>
-
-      {decks.map((deck, index) => (
-        <div
-          className="w-[80%] h-[100%] flex  items-center px-10 relative mx-4  mt-20 mb-20 py-6  "
-          key={index}
-        >
-          <div className="z-50 left-28">
-            <div className="rounded-full absolute  font-bold bottom-40 w-28 h-28 left-[37%] border-2  border-purple-800  bg-white   text-purple-600">
-              {deck.deckImage ? (
-                <PreviewImage
-                  className="w-28 h-28 rounded-full"
-                  file={deck.deckImage}
-                ></PreviewImage>
-              ) : (
-                <span className=" absolute top-10 left-3 ">No Image</span>
-              )}
-            </div>
-          </div>
-
-          <div className="   deck bg-white w-[100%] h-60 mx-1 my-1 py-3 px-3 flex flex-col items-center rounded-md border-2  border-purple-800 absolute top-0 left-0">
-            <h1 className="font-bold text-xl  absolute top-12 left-[44%] h-10 uppercase text-purple-800">
-              {deck.Group}
-            </h1>
-            <div className="  reative   w-68 h-20 absolute  top-20 left-5  leading-4 tracking-normal overflow-hidden ">
-              {deck.Description}
-            </div>
-            <img src=""></img>
-
-            <NavLink
-              to={`${index}`}
-              className=" border-2  border-purple-800 bg-purple-800 cursor-pointer bg-transparent text-purple-900  bg-purple-9 font-bold outline-none rounded-md absolute top-40 pl-14 pt-1 left-30 w-56 h-12 hover:bg-purple-800 hover:text-white "
+    
+    
+    <div className="main  mt-10 ml-5  grid grid-cols-2 lg:grid-cols-4 w-12/12 mb-96 pb-28 relative h-full mx-2 my-2">
+      {decks.length == 0 && (
+        <div className=" w-[90vw] flex flex-col space-y-2 items-center justify-center   Empty px-2 py-2 my-[20vh]  mx-2  rounded-md     ">
+          {" "}
+          <span className=" text-White   px-1 py-1  relative text-xl  sm:text-xl  md:text-3xl ">
+            No Flashcards created yet!
+          </span>
+          <div className="bg-blue-600 text-white px-5 py-1 flex items-center rounded-md">
+            <Link
+              to=".."
+              relative="path"
+              className="text-white text-base  sm:text-xl  md:text-2xl"
             >
-              View Cards
-            </NavLink>
+              Create Flashcard
+            </Link>
           </div>
         </div>
-      ))}
+      )}
+      {/* {decks.length >0 && (
+        <div className=" w-[100vw] flex flex-col space-y-2 items-center justify-center   Empty px-2 py-2 my-[20vh]  mx-2  rounded-md     ">
+       
+          <span className=" text-White   px-1 py-1  relative text-xl  sm:text-xl  md:text-3xl ">
+            FlashCards
+          </span>
+          
+        </div>
+      )} */}
+
+      {decks.length>0 &&
+    
+        decks.map((deck, index) => (
+          <div className="Single-Deck  rounded-lg bg-white-600  px-1 py-1 mx-2 my-1 flex flex-col  overflow-hidden justify-start items-center relative  text-base  sm:text-xl  md:text-2xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] hover:scale-105 transition-all">
+             {deck.deckImage && (
+              <PreviewImage
+                className="Group Name w-32 h-32 sm:w-36 md:w-44 px-1 py-1 mx-1 my-1 rounded-full "
+                file={deck.deckImage}
+              ></PreviewImage>
+            )}
+            <div className="Group Name px-1 py-1 mx-1 my-1 text-base  sm:text-xl  md:text-xl font-bold relative ">{deck.Group.slice(0,50)}</div>
+            <div className=" flex items-center text-center Group Description px-1 py-1 mx-2 md:mx-4 mb-14 text-xs  sm:text-md  md:text-lg  overflow-hidden  relative ">{deck.Description.slice(0,100)}</div>
+            <div className=" border-2 border-blue-600 text-black  px-5 py-1 flex items-center rounded-md absolute bottom-1 mx-1 my-1 hover:scale-110  hover:bg-blue-500 hover:text-white transition-all">
+            <Link
+              to={`${index}`}
+              relative="path"
+              className="text-xs  sm:text-lg  md:text-xl "
+            >
+             View Cards
+            </Link>
+          </div>
+          
+          </div>
+        ))}
     </div>
   );
 };
