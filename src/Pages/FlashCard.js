@@ -9,17 +9,7 @@ import { BiLeftArrow } from "react-icons/bi";
 
 import PreviewImage from "../Components/PreviewImage";
 import ShareModal from "../Components/ShareModal";
-
-const breakPoints = [
-  { width: 1, itemsToShow: 1 },
-  { width: 1200, itemsToShow: 2 },
-  {
-    width: 1800,
-    itemsToShow: 3,
-  },
-  //  { width:1, itemsToShow:1},
-  //  { width:1, itemsToShow:1},
-];
+import { saveAs } from "file-saver";
 
 function FlashCard() {
   //getting the params from the window location for displaying the respective deck
@@ -78,6 +68,17 @@ function FlashCard() {
     setModal((prevModal) => !prevModal);
   };
 
+  const handleDownload = () => {
+    console.log("inside download");
+    const file = new Blob(
+      localStorage.getItem("Decks") ? [localStorage.getItem("Decks")] : [" "],
+      {
+        type: "application/json",
+      }
+    );
+    saveAs(file, "Deck.json");
+  };
+
   // carousel.scrollLeft = carousel.scrollLeft+width;
 
   return (
@@ -85,9 +86,9 @@ function FlashCard() {
       {decks[index] && (
         <div className=" flashcard  transition-all mt-2">
           <section className=" space-y-0 group-desc my-1  mx-2 flex flex-col h-[10vh] md:h-[13vh]">
-            <div className="Group Name   text-sm md:text-md lg:text-lg xl:text-xl transition-all static  flex  items-center  px-2  ">
+            <div className="Group Name   text-sm md:text-md lg:text-lg xl:text-xl transition-all static  flex  items-center  px-2  text-blue-700 ">
               <Link to=".." relative="path" className="my-1">
-                <BiArrowBack size={25}></BiArrowBack>
+                <BiArrowBack size={25} ></BiArrowBack>
               </Link>
               <span className=" ml-4 font-bold">Name : </span>
               {decks[index].Group}
@@ -130,8 +131,8 @@ function FlashCard() {
                 onClick={leftScroll}
                 disabled={currentTerm == 0 && true}
               >
-                <span className="text-2xl md:text-4xl  w-5 h-10  flex flex-col justify-center  rounded-md pb-2  hover:scale-125 ">
-                  <BiLeftArrow color={"blue"}></BiLeftArrow>
+                <span className="text-2xl md:text-4xl w-5 h-10  flex flex-col justify-center  rounded-md pb-2  hover:scale-125 text-blue-500 ">
+                  <BiLeftArrow ></BiLeftArrow>
                 </span>
               </button>
 
@@ -140,8 +141,8 @@ function FlashCard() {
                 onClick={rigthScroll}
                 disabled={currentTerm === itemNos - 1}
               >
-              <span className="text-2xl md:text-4xl w-5 h-10  flex flex-col justify-center  rounded-md pb-2  hover:scale-125 ">
-                  <BiRightArrow color={"blue"}></BiRightArrow>
+                <span className="text-2xl md:text-4xl w-5 h-10  flex flex-col justify-center  rounded-md pb-2  hover:scale-125 text-blue-500 ">
+                  <BiRightArrow ></BiRightArrow>
                 </span>
               </button>
               <div
@@ -165,9 +166,9 @@ function FlashCard() {
                   {" "}
                   Download
                 </span>
-                <button>
-                  <span className="text-lg text-black  md:text-2xl ">
-                    <ImDownload color="blue"></ImDownload>
+                <button onClick={handleDownload}>
+                  <span className="text-lg  md:text-2xl text-blue-600 ">
+                    <ImDownload ></ImDownload>
                   </span>
                 </button>
               </div>
@@ -177,15 +178,23 @@ function FlashCard() {
                   Share
                 </span>
                 <button onClick={modalHandler} className="">
-                  <span className="text-lg   md:text-2xl hover:scale-105">
-                    <BiShareAlt color="blue"></BiShareAlt>
+                  <span className="text-lg   md:text-2xl hover:scale-105 text-blue-600 ">
+                    <BiShareAlt ></BiShareAlt>
                   </span>
                 </button>
               </div>
             </div>
           </section>
           <div className="  flex flex-row  space-x-16 md:space-x-10 items-start justify-center ">
-            <div className="text-md md:text-lg lg:text-2xl  text-blue-700 "><span className="font-bold">{`${currentTerm + 1}/${itemNos} `}</span> <span className="text-black ml-2 md:hidden"> Term: {decks[index].Terms[currentTerm].Term}  </span></div>
+            <div className="text-md md:text-lg lg:text-2xl  text-blue-600 ">
+              <span className="font-bold">{`${
+                currentTerm + 1
+              }/${itemNos} `}</span>{" "}
+              <span className="text-black ml-2 md:hidden">
+                {" "}
+                Term: {decks[index].Terms[currentTerm].Term}{" "}
+              </span>
+            </div>
 
             <div className="  w-auto  flex md:hidden items-center  space-x-5   rounded-lg self-start justify-center  px-1 py-1  text-xs md:text-md lg:text-lg xl:text-xl transition-all shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px]">
               {modal && <ShareModal onClick={modalHandler}></ShareModal>}
@@ -194,9 +203,9 @@ function FlashCard() {
                   {" "}
                   Download
                 </span>
-                <button>
-                  <span className="text-xl text-black  md:text-2xl hover:scale-105">
-                    <ImDownload color="blue"></ImDownload>
+                <button onClick={handleDownload}>
+                  <span className="text-xl text-blue-500   md:text-2xl hover:scale-105 ">
+                    <ImDownload ></ImDownload>
                   </span>
                 </button>
               </div>
@@ -206,8 +215,8 @@ function FlashCard() {
                   Share
                 </span>
                 <button onClick={modalHandler} className="">
-                  <span className="text-xl   md:text-2xl hover:scale-105">
-                    <BiShareAlt color="blue"></BiShareAlt>
+                  <span className="text-xl   md:text-2xl hover:scale-105 text-blue-500 ">
+                    <BiShareAlt ></BiShareAlt>
                   </span>
                 </button>
               </div>

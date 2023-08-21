@@ -49,10 +49,16 @@ const MyFlashCards = () => {
           <div className="Single-Deck  rounded-lg bg-white-600  px-1 py-1 mx-2 my-1 flex flex-col  overflow-hidden justify-start items-center relative  text-base  sm:text-xl  md:text-2xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] hover:scale-105 transition-all">
              {deck.deckImage && (
               <PreviewImage
-                className="Group Name w-32 h-32 sm:w-36 md:w-44 px-1 py-1 mx-1 my-1 rounded-full "
+                className="Group Name w-32 h-32 sm:w-36 md:w-44 px-1 py-1 mx-1 my-1 rounded-full border border-1 border-blue-700 "
                 file={deck.deckImage}
               ></PreviewImage>
             )}
+            {
+              !deck.deckImage&&<PreviewImage
+              className="Group Name w-32 h-32 sm:w-36 md:w-44 px-1 py-1 mx-1 my-1 rounded-full  border border-1 border-blue-700  "
+              file={"dummy.png"}
+            ></PreviewImage>
+            }
             <div className="Group Name px-1 py-1 mx-1 my-1 text-base  sm:text-xl  md:text-xl font-bold relative ">{deck.Group.slice(0,50)}</div>
             <div className=" flex items-center text-center Group Description px-1 py-1 mx-2 md:mx-4 mb-14 text-xs  sm:text-md  md:text-lg  overflow-hidden  relative ">{deck.Description.slice(0,100)}</div>
             <div className=" border-2 border-blue-600 text-black  px-5 py-1 flex items-center rounded-md absolute bottom-1 mx-1 my-1 hover:scale-110  hover:bg-blue-500 hover:text-white transition-all">

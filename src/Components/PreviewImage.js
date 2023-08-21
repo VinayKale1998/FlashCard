@@ -14,7 +14,7 @@ function PreviewImage({ file,className}) {
     // }
   return (
     <div>
-        {<img src={file}  className ={className} alt='Preview' ></img>}
+        {<img src={file}   className ={className} alt='No image' ></img>}
     </div>
   )
 }

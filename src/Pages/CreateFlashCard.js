@@ -90,7 +90,7 @@ function CreateFlashCard() {
               </div>
 
               {/* first form */}
-              <section className="  flex flex-wrap first-form bg-[white] my-4 py- px-1  mx-[2%]     sm:mx-[5%] md:mx-[6%] lg:mx-[6%]   transition-all border border-black  border-separate shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+              <section className="first form  rounded-md  flex flex-wrap first-form bg-[white] my-4 py- px-1  mx-[2%]     sm:mx-[5%] md:mx-[6%] lg:mx-[6%]   transition-all border border-blue-500 border-separate shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
                 {/* GroupName label and input */}
                 <div className="groupName   flex flex-col  justify-start px-[0.2%] py-[0.2%] mx-[0.2%]  my-[1%] basis-[50%]  transition-all">
                   {/* grouplabel */}
@@ -101,7 +101,7 @@ function CreateFlashCard() {
 
                   {/* groupInput */}
                   <Field
-                    className=" focus:border-2 placeholder:text-base    focus:border-blue-400 bg-white px-1 py-1 x  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  text-[12px]  md:text-base lg:text-xl transition-all outline-none hover:border-1       border border-black "
+                    className=" focus:border-2 placeholder:text-base    focus:border-blue-400 bg-white px-1 py-1 x  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  text-[12px]  md:text-base lg:text-xl transition-all outline-none hover:border-1       border border-blue-500"
                     placeholder="Enter Group Name"
                     name="Group"
                   ></Field>
@@ -131,7 +131,7 @@ function CreateFlashCard() {
                       values.deckImage
                         ? "px-0  hover:bg-transparent w-24 sm:w-36 md:w-36 h-auto py-0 "
                         : "w-28 px-2 py-1"
-                    } border border-black group shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] flex space-x-1 bg-blue-500   hover:bg-blue-900  transition-all outline-none hover:border-1     items-center self-stretch `}
+                    } border border-blue-500 group shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] flex space-x-1 bg-blue-500   hover:bg-blue-900  transition-all outline-none hover:border-1     items-center self-stretch `}
                     disabled={isSubmitting}
                     type="button"
                     onClick={() => {
@@ -171,7 +171,7 @@ function CreateFlashCard() {
                   <Field
                     as="textarea"
                     name="Description"
-                    className="   focus:border-2 placeholder:text-base focus:border-blue-400 border border-black bg-white overflow-hidden   my-1 px-1 py-1 x    text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all outline-none hover:border-1      "
+                    className="   focus:border-2 placeholder:text-base focus:border-blue-400 border border-blue-500 bg-white overflow-hidden   my-1 px-1 py-1 x    text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all outline-none hover:border-1      "
                     placeholder="Enter Group Description"
                   ></Field>
                   <ErrorMessage
@@ -213,7 +213,7 @@ function CreateFlashCard() {
               {/* second formx */}
               <FieldArray name="Terms">
                 {({ push, remove }) => (
-                  <section className=" mt-[2%] second-formb bg-[white] border border-black my-[0.5%] py-1 px-1 mx-[2%]    flex flex-col sm:mx-[5%] md:mx-[6%] lg:mx-[6%]  transition-all shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+                  <section className="second-form rounded-md mt-[2%]  bg-[white] border border-blue-500 my-[0.5%] py-1 px-1 mx-[2%]    flex flex-col sm:mx-[5%] md:mx-[6%] lg:mx-[6%]  transition-all shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
                     {/* single term input */}
 
                     {values.Terms.map((item, index) => (
@@ -237,7 +237,7 @@ function CreateFlashCard() {
                             {({ field, form, meta }) => (
                               <input
                                 {...field}
-                                className=" focus:border-2 focus:border-blue-400   placeholder:text-base border border-black px-1 py-1  bg-white text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  md:text-base lg:text-xl transition-all  hover:border-1      outline-none"
+                                className=" focus:border-2 focus:border-blue-400   placeholder:text-base border border-blue-500 px-1 py-1  bg-white text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  md:text-base lg:text-xl transition-all  hover:border-1      outline-none"
                                 ref={(element) =>
                                   (focusRefs.current[index] = element)
                                 }
@@ -262,7 +262,7 @@ function CreateFlashCard() {
                           <Field
                             as="textarea"
                             name={`Terms[${index}].definition`}
-                            className=" focus:border-2 focus:border-blue-400  overflow-hidden placeholder:text-base border border-black py-1 bg-white    px-1 text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all  hover:border-1      outline-none"
+                            className=" focus:border-2 focus:border-blue-400  overflow-hidden placeholder:text-base border border-blue-500 py-1 bg-white    px-1 text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all  hover:border-1      outline-none"
                             placeholder="Enter Term Description"
                           ></Field>
                           <ErrorMessage
@@ -374,7 +374,7 @@ function CreateFlashCard() {
                               values.Terms[index].image
                                 ? "px-0  hover:bg-transparent hover:border-white   py-0  "
                                 : " "
-                            }   border border-black  group shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] flex space-x-1 bg-white    transition-all outline-none hover:border-1     hover:text-white  items-center  justify-center `}
+                            }   border border-blue-500 group shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] flex space-x-1 bg-white    transition-all outline-none hover:border-1     hover:text-white  items-center  justify-center `}
                             disabled={isSubmitting}
                             type="button"
                             onClick={() => {
@@ -433,7 +433,7 @@ function CreateFlashCard() {
                           </div>
 
                           <button
-                            className={`${values.Terms[index].image?"":" bg-blue-500  borderborder-black hover:bg-blue-900 "} px-[2%] py-[2%] mx-1 my-1 w-24 sm:w-36 md:w-36   flex justify-center items-center   transition-all `}
+                            className={`${values.Terms[index].image?"":" bg-blue-500  borderborder-blue-500 hover:bg-blue-900 "} px-[2%] py-[2%] mx-1 my-1 w-24 sm:w-36 md:w-36   flex justify-center items-center   transition-all `}
                             onClick={() => {
                               fileRefs.current[index].click();
                               if (values.Terms[index].image) {
@@ -480,7 +480,7 @@ function CreateFlashCard() {
                           <Field
                             as="textarea"
                             name={`Terms[${index}].definition`}
-                            className=" focus:border-2 placeholder:text-base focus:border-blue-400 border border-black py-1 bg-white    px-1 text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all overflow-hidden hover:border-1      outline-none"
+                            className=" focus:border-2 placeholder:text-base focus:border-blue-400 border border-blue-500 py-1 bg-white    px-1 text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all overflow-hidden hover:border-1      outline-none"
                             placeholder="Enter Term Description"
                           ></Field>
                           <ErrorMessage
