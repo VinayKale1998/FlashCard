@@ -85,20 +85,24 @@ function FlashCard() {
     <div>
       {decks[index] && (
         <div className=" flashcard  transition-all mt-2">
-          <section className=" space-y-0 group-desc my-1  mx-2 flex flex-col h-[10vh] md:h-[13vh]">
-            <div className="Group Name   text-sm md:text-md lg:text-lg xl:text-xl transition-all static  flex  items-center  px-2  text-blue-700 ">
-              <Link to=".." relative="path" className="my-1">
-                <BiArrowBack size={25} ></BiArrowBack>
-              </Link>
-              <span className=" ml-4 font-bold">Name : </span>
+          <div className="text-3xl flex ml-5 mt-4">
+            <Link to=".." relative="path " className="hidden md:block"  >
+              <BiArrowBack ></BiArrowBack>
+              
+            </Link>
+            <section className=" space-y-0 group-desc my-1  mx-2 flex flex-col h-[10vh] md:h-[13vh] justify-center ml-[10vw] md:ml-[30vw]">
+            <div className="Group Name   text-sm md:text-md lg:text-lg xl:text-xl transition-all static  flex  items-center   ">
+              <span className=" font-bold">Deck : </span>
               {decks[index].Group}
             </div>
 
-            <div className="Group Name   mx-10 my-2 pl-4  text-sm  md:text-md lg:text-lg xl:text-xl transition-all overflow-hidden">
+            <div className="Group Name   my-2   text-sm  md:text-md lg:text-lg xl:text-xl transition-all overflow-hidden">
               <span className="font-bold">Description : </span>{" "}
               {decks[index].Description}
             </div>
           </section>
+          </div>
+          
 
           <section className="Deck display flex flex-row my-1 mx-2 ml-4 ">
             {/* flashcards list */}
@@ -132,17 +136,17 @@ function FlashCard() {
                 disabled={currentTerm == 0 && true}
               >
                 <span className="text-2xl md:text-4xl w-5 h-10  flex flex-col justify-center  rounded-md pb-2  hover:scale-125 text-blue-500 ">
-                  <BiLeftArrow ></BiLeftArrow>
+                  <BiLeftArrow></BiLeftArrow>
                 </span>
               </button>
 
               <button
-                className="rightScroll absolute   left-[95%] h-[100%] g-red-600 flex flex-col justify-center   "
+                className="rightScroll absolute   left-[90%] md:left-[95%] h-[100%] g-red-600 flex flex-col justify-center   "
                 onClick={rigthScroll}
                 disabled={currentTerm === itemNos - 1}
               >
                 <span className="text-2xl md:text-4xl w-5 h-10  flex flex-col justify-center  rounded-md pb-2  hover:scale-125 text-blue-500 ">
-                  <BiRightArrow ></BiRightArrow>
+                  <BiRightArrow></BiRightArrow>
                 </span>
               </button>
               <div
@@ -168,7 +172,7 @@ function FlashCard() {
                 </span>
                 <button onClick={handleDownload}>
                   <span className="text-lg  md:text-2xl text-blue-600 ">
-                    <ImDownload ></ImDownload>
+                    <ImDownload></ImDownload>
                   </span>
                 </button>
               </div>
@@ -179,7 +183,7 @@ function FlashCard() {
                 </span>
                 <button onClick={modalHandler} className="">
                   <span className="text-lg   md:text-2xl hover:scale-105 text-blue-600 ">
-                    <BiShareAlt ></BiShareAlt>
+                    <BiShareAlt></BiShareAlt>
                   </span>
                 </button>
               </div>
@@ -205,7 +209,7 @@ function FlashCard() {
                 </span>
                 <button onClick={handleDownload}>
                   <span className="text-xl text-blue-500   md:text-2xl hover:scale-105 ">
-                    <ImDownload ></ImDownload>
+                    <ImDownload></ImDownload>
                   </span>
                 </button>
               </div>
@@ -216,7 +220,7 @@ function FlashCard() {
                 </span>
                 <button onClick={modalHandler} className="">
                   <span className="text-xl   md:text-2xl hover:scale-105 text-blue-500 ">
-                    <BiShareAlt ></BiShareAlt>
+                    <BiShareAlt></BiShareAlt>
                   </span>
                 </button>
               </div>

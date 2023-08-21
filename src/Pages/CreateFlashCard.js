@@ -101,12 +101,12 @@ function CreateFlashCard() {
 
                   {/* groupInput */}
                   <Field
-                    className=" focus:border-2 placeholder:text-base    focus:border-blue-400 bg-white px-1 py-1 x  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  text-[12px]  md:text-base lg:text-xl transition-all outline-none hover:border-1       border border-blue-500"
+                    className=" focus:border-2 placeholder:text-xs sm:placeholder:text-base     focus:border-blue-400 bg-white px-1 py-1 x  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  text-[12px]  md:text-base lg:text-xl transition-all outline-none hover:border-1       border border-blue-500"
                     placeholder="Enter Group Name"
                     name="Group"
                   ></Field>
                   <ErrorMessage
-                    className=" text-red-500  md:text-lg  text-[10px] text-xs sm:text-sm"
+                    className=" text-red-500  md:text-md  text-[10px] text-xs sm:text-sm"
                     component={Error}
                     name="Group"
                   ></ErrorMessage>
@@ -164,18 +164,18 @@ function CreateFlashCard() {
                 <div className="groupName  flex flex-col px-[0.2%] py-[0.2%] mx-1  my-1  transition-all basis-[80%] md:basis-[60%]">
                   {/* description label */}
                   <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all    ml-1">
-                    Group Description
+                    Group Description <span className=" text-red-500  md:text-lg   ">*</span>
                   </label>
 
                   {/*  group description input */}
                   <Field
                     as="textarea"
                     name="Description"
-                    className="   focus:border-2 placeholder:text-base focus:border-blue-400 border border-blue-500 bg-white overflow-hidden   my-1 px-1 py-1 x    text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all outline-none hover:border-1      "
+                    className="   focus:border-2 placeholder:text-xs sm:placeholder:text-base  focus:border-blue-400 border border-blue-500 bg-white overflow-hidden   my-1 px-1 py-1 x    text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all outline-none hover:border-1      "
                     placeholder="Enter Group Description"
                   ></Field>
                   <ErrorMessage
-                    className=" text-red-500  md:text-lg  text-[10px] text-xs sm:text-sm"
+                    className=" text-red-500  md:text-md  text-[10px] text-xs sm:text-sm"
                     component={Error}
                     name="Description"
                   ></ErrorMessage>
@@ -237,7 +237,7 @@ function CreateFlashCard() {
                             {({ field, form, meta }) => (
                               <input
                                 {...field}
-                                className=" focus:border-2 focus:border-blue-400   placeholder:text-base border border-blue-500 px-1 py-1  bg-white text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  md:text-base lg:text-xl transition-all  hover:border-1      outline-none"
+                                className=" focus:border-2 focus:border-blue-400   placeholder:text-xs sm:placeholder:text-base  border border-blue-500 px-1 py-1  bg-white text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  md:text-base lg:text-xl transition-all  hover:border-1      outline-none"
                                 ref={(element) =>
                                   (focusRefs.current[index] = element)
                                 }
@@ -249,7 +249,7 @@ function CreateFlashCard() {
                           <ErrorMessage
                             name={`Terms[${index}].Term`}
                             component={Error}
-                            className=" text-red-500  md:text-lg  text-[10px] text-xs sm:text-sm"
+                            className=" text-red-500 md:text-md  text-[10px] text-xs sm:text-sm"
                           ></ErrorMessage>
                         </div>
 
@@ -262,13 +262,13 @@ function CreateFlashCard() {
                           <Field
                             as="textarea"
                             name={`Terms[${index}].definition`}
-                            className=" focus:border-2 focus:border-blue-400  overflow-hidden placeholder:text-base border border-blue-500 py-1 bg-white    px-1 text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all  hover:border-1      outline-none"
+                            className=" focus:border-2 focus:border-blue-400  overflow-hidden placeholder:text-xs sm:placeholder:text-base  border border-blue-500 py-1 bg-white    px-1 text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all  hover:border-1      outline-none"
                             placeholder="Enter Term Description"
                           ></Field>
                           <ErrorMessage
                             name={`Terms[${index}].definition`}
                             component={Error}
-                            className=" text-red-500  md:text-lg  text-[10px] text-xs sm:text-sm"
+                            className=" text-red-500 md:text-md text-[10px] text-xs sm:text-sm"
                           ></ErrorMessage>
 
                           {/* termImage input hidden  */}
@@ -467,12 +467,12 @@ function CreateFlashCard() {
                           <ErrorMessage
                             name={`Terms[${index}].image`}
                             component={Error}
-                            className=" text-red-500  md:text-lg  text-[10px] text-xs sm:text-sm"
+                            className=" text-red-500  md:text-md  text-[10px] text-xs sm:text-sm"
                           ></ErrorMessage>
                         </div>
 
                         {/* term description below lg */}
-                        <div className="  basis-[90%]  flex flex-col   lg:hidden ml-[3%] pl-[3%] py-[0.5%]     sm:pl-[1%]  ">
+                        <div className="  basis-[90%]  flex flex-col   lg:hidden ml-[2%] sm:ml-[3%] pl-[3%] py-[0.5%]     sm:pl-[1%]  ">
                           <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all   ">
                             Term Definition{" "}
                             <span className=" text-red-500  md:text-lg  ">*</span>
@@ -480,13 +480,13 @@ function CreateFlashCard() {
                           <Field
                             as="textarea"
                             name={`Terms[${index}].definition`}
-                            className=" focus:border-2 placeholder:text-base focus:border-blue-400 border border-blue-500 py-1 bg-white    px-1 text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all overflow-hidden hover:border-1      outline-none"
+                            className=" focus:border-2 placeholder:text-xs sm:placeholder:text-base  focus:border-blue-400 border border-blue-500 py-1 bg-white    px-1 text-[12px]  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] md:text-base lg:text-xl transition-all overflow-hidden hover:border-1      outline-none"
                             placeholder="Enter Term Description"
                           ></Field>
                           <ErrorMessage
                             name={`Terms[${index}].definition`}
                             component={Error}
-                            className=" text-red-500  md:text-lg  text-[10px] text-xs sm:text-sm"
+                            className=" text-red-500 md:text-md text-[10px] text-xs sm:text-sm"
                           ></ErrorMessage>
 
                           {/* termImage input hidden  */}
@@ -542,7 +542,7 @@ function CreateFlashCard() {
                 {/* <pre>{JSON.stringify({ values, errors }, null, 4)}</pre> */}
                 <button
                   type="submit"
-                  className="py-2 px-6 rounded-sm hover:scale-110 bg-blue-700 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  ml-[40%]  text-base  sm:text-xl  md:text-2xl  transition-all text-white hover:text-white  flex  "
+                  className="py-2 px-6 rounded-sm hover:scale-110 bg-blue-700 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]  mt-4 ml-[40%]  text-base  sm:text-xl  md:text-2xl  transition-all text-white hover:text-white  flex  "
                 >
                   Create
                 </button>
