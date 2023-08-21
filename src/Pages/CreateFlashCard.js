@@ -183,7 +183,7 @@ function CreateFlashCard() {
                   <input
                     className="mx-1 my-1 bg-white px-2 py-1 hidden"
                     type="file"
-                    accept=".png,.jpeg,.jpg"
+                    accept=".png,.jpeg,.jpg,jpeg"
                     ref={deckRef}
                     onChange={(event) => {
                       if (event.target.files[0]) {

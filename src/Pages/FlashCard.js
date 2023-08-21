@@ -8,7 +8,7 @@ import { BiRightArrow } from "react-icons/bi";
 import { BiLeftArrow } from "react-icons/bi";
 
 import PreviewImage from "../Components/PreviewImage";
-import DownloadModal from "../Components/DownloadModal";
+import ShareModal from "../Components/ShareModal";
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -159,7 +159,7 @@ function FlashCard() {
               </div>
             </div>
             <div className="   Justify Center hidden md:flex  flex-row items-center  relative  rounded-lg self-start justify-center w-[14%] px-1 py-1 mt-5   text-xs md:text-md lg:text-lg xl:text-xl transition-all shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px]">
-              {modal && <DownloadModal onClick={modalHandler}></DownloadModal>}
+              {modal && <ShareModal onClick={modalHandler}></ShareModal>}
               <div className=" flex flex-col  justify-center items-center w-full  mx-1 my-1 hover:scale-110 ">
                 <span className="text-xs md:text-md lg:text-lg xl:text-xl border-b-2 border-blue-600 border-l-0 border-r-0 border-t-0">
                   {" "}
@@ -188,7 +188,7 @@ function FlashCard() {
             <div className="text-md md:text-lg lg:text-2xl  text-blue-700 "><span className="font-bold">{`${currentTerm + 1}/${itemNos} `}</span> <span className="text-black ml-2 md:hidden"> Term: {decks[index].Terms[currentTerm].Term}  </span></div>
 
             <div className="  w-auto  flex md:hidden items-center  space-x-5   rounded-lg self-start justify-center  px-1 py-1  text-xs md:text-md lg:text-lg xl:text-xl transition-all shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px]">
-              {modal && <DownloadModal onClick={modalHandler}></DownloadModal>}
+              {modal && <ShareModal onClick={modalHandler}></ShareModal>}
               <div className=" flex flex-col  justify-center items-center w-full text-xs md:text-md lg:text-lg xl:text-xl mx-1 my-1">
                 <span className="text-md  md:text-md lg:text-lg xl:text-xl border-b-2 border-blue-600 border-l-0 border-r-0 border-t-0 ">
                   {" "}

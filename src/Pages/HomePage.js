@@ -9,7 +9,7 @@ function HomePage() {
       <nav className="flex flex-row items-center  justify-between shadow-[5px_5px_0px_0px_rgba(37,99,235)] px-[0.5%] py-[1%]  bg-white">
         <NavLink
           to="/"
-          className="ml-[0.5%] flex font-sans  w-[10%]  text-xl sm:text-3xl  md:text-4xl lg:5xl   transition-all  text-blue-600"
+          className="ml-[0.5%] flex font-sans  w-[10%]  text-lg sm:text-3xl  md:text-4xl lg:5xl   transition-all  text-blue-600"
         >
           FlashKrew{" "}
           <img
@@ -18,13 +18,13 @@ function HomePage() {
             width={50}
           ></img>
         </NavLink>
-        <div className="flex    items-end justify-end">
+        <div className="flex   items-end justify-end">
           <NavLink
             to="/"
             className={({ isActive }) =>
               isActive
                 ? " flex text-lg font-sans scale-105 text-blue-600 sm:text-1xl  md:text-2xl  mx-3 my-1  hover:text-blue  transition-all"
-                : " flex text-lg font-sans  sm:text-1xl  md:text-2xl mx-3 my-1   hover:text-blue  transition-all"
+                : " flex text-lg font-sans scale-105 sm:text-1xl  md:text-2xl  mx-3 my-1  hover:text-blue  transition-all"
             }
           >
             Create New
@@ -33,8 +33,8 @@ function HomePage() {
             to="/MyFlashCards"
             className={({ isActive }) =>
               isActive
-                ? "text-lg font-sans sm:text-1xl ml-10  scale-105 text-blue-600 md:text-2xl mx-3 my-1   hover:text-blue  transition-all"
-                : "text-lg font-sans  sm:text-1xl ml-10 md:text-2xl   mx-3 my-1  hover:text-blue  transition-all"
+                ? "text-md font-sans sm:text-1xl ml-5  md:mr-32 scale-105 text-blue-600 md:text-2xl mx-3 my-1 md:mr:4   hover:text-blue  transition-all"
+                : " text-md font-sans sm:text-1xl ml-5  md:mr-32 scale-105  md:text-2xl mx-3 my-1 md:mr:4   hover:text-blue  transition-all"
             }
           >
             My FlashCards
