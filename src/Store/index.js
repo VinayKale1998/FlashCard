@@ -1,23 +1,25 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
-
-
 const deckSlice = createSlice({
   name: "deckSlice",
-  initialState: localStorage.getItem("Decks") ? JSON.parse(localStorage.getItem("Decks")):[],
+  initialState: localStorage.getItem("Decks")
+    ? JSON.parse(localStorage.getItem("Decks"))
+    : [],
   reducers: {
     deckDetailsAdd(state, action) {
-      localStorage.setItem('Decks',"[]")
-      console.log("inside deck reducer")
-      console.log(action.payload);
-    
-      state.push(action.payload);
-      const Decks=JSON.parse(localStorage.getItem('Decks'))
-      const newDecks=[...Decks,action.payload]
-      localStorage.setItem('Decks',newDecks)
-    },
+      if(localStorage.getItem("Decks")===null ||undefined)
+      {
+        localStorage.setItem("Decks", "[]")
+      }
 
-   
+      // console.log("inside deck reducer");
+      // console.log(action.payload);
+
+      state.push(action.payload);
+      const Decks = JSON.parse(localStorage.getItem("Decks"));
+      const newDecks = [...Decks, action.payload];
+      localStorage.setItem("Decks", newDecks);
+    },
   },
 });
 
@@ -28,11 +30,11 @@ const termsSlice = createSlice({
   reducers: {
     addDeck(state, action) {
       console.log(action.payload);
-      console.log('reducer')
-        // const Decks=JSON.parse(localStorage.getItem('Decks'))
-        // const newDecks=[...Decks,action.payload]
-        // localStorage.setItem('Decks',newDecks)
-        
+      console.log("reducer");
+      // const Decks=JSON.parse(localStorage.getItem('Decks'))
+      // const newDecks=[...Decks,action.payload]
+      // localStorage.setItem('Decks',newDecks)
+
       state.push(action.payload);
       console.log(state);
     },
