@@ -154,7 +154,7 @@ function FlashCard() {
                 ref={carouselRef}
               >
                 {decks[index].Terms.map((item, index) => (
-                  <div className="min-w-[100%]  bg-red-500">
+                  <div className="min-w-[100%]  max-w-[100%] ">
                     <PreviewImage
                       className=" relative w-full  max-h-[30vh] sm:max-h-[60vh] px-1 border border-1 border-blue-700 rounded-md"
                       file={item.image}
