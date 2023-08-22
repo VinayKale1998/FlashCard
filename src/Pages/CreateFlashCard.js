@@ -527,6 +527,7 @@ function CreateFlashCard() {
                       <button
                         className=" ml-[2%] mx-1 my-1  px-[0.4%] py-[0.4%] text-blue-500   text-[12px]  hover:scale-[120%] md:text-base lg:text-xl transition-all duration-250   -110   hover:text-blue-700 "
                         type="button"
+                        id='addMore'
                         onClick={() => {
                           push({ Term: "", definition: "", image: null });
                         }}
