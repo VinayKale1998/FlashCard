@@ -1,45 +1,49 @@
-import { Link, NavLink } from "react-router-dom";
-import { FiUpload } from "react-icons/fi";
-import { useState, useRef } from "react";
-import { MdDelete } from "react-icons/md";
-import { BiEdit } from "react-icons/bi";
+
 import React from "react";
+import { useRef } from "react";
 import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
-import { useDispatch, useSelector } from "react-redux";
-import Error from "../Components/Error";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
+
+import Error from "../Components/Error";
 import PreviewImage from "../Components/PreviewImage";
 import { deckActions } from "../Store";
 
+
+import { FiUpload } from "react-icons/fi";
+import { MdDelete } from "react-icons/md";
+import { BiEdit } from "react-icons/bi";
+//using yup library for formik validations
+
+
+//intital state for the Formik form with Group referring to deck name and terms referring to array of term flashcards
 const initialState = {
   Group: "",
   Description: "",
   deckImage: null,
   Terms: [{ Term: "", definition: "", image: null }],
 };
+
+
+
 function CreateFlashCard() {
+  //file refs for the input elements for accessing files from the input elements 
   const fileRefs = useRef([]);
+
+  //focus refs for the term text fields to provide focus when user clicks on edit card
   const focusRefs = useRef([]);
+
+  //deck ref to use button to click the induce click action on the input field of type file //opens a browse window
   const deckRef = useRef();
-  const dispatch= useDispatch();
 
-  // const terms = useSelector((state) => state.deck);
-
-  // const [image, setImage] = React.useState(false);
-
-  // // const url = {
-  // //   image: `data:image/png;base64,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`,
-  // // };
-
-  // const imageHandler = () => {
-  //   setImage(true);
-  // };
+  //dispatch to dispatch actions for storing state in redux
+  const dispatch = useDispatch();
 
   return (
     <Formik
       initialValues={initialState}
       onSubmit={(values, { resetForm }) => {
-        console.log("inside formk submit")
+        console.log("inside formk submit");
         dispatch(deckActions.deckDetailsAdd(values));
         resetForm();
       }}
@@ -62,7 +66,7 @@ function CreateFlashCard() {
               .required("Term Description is required")
               .min(5, "Term must contain at least 5 characters")
               .max(400, "Term must contain 400 chars at max"),
-              image:Yup.string().required("Image is required")
+            image: Yup.string().required("Image is required"),
           })
         )
           .min(1)
@@ -116,22 +120,22 @@ function CreateFlashCard() {
                 <div
                   className={`${
                     values.deckImage ? "" : ""
-                  }      px-[0.2%]  ml-[1%]  my-[1%]  flex flex-col  justify-start items-center  self-center basis-[40%] overflow-hidden`}
+                  }      px-[0.2%]  ml-[1%]  my-[1%]  flex flex-col  justify-start items-start  self-start basis-[40%] overflow-hidden`}
                 >
                   <label
                     className={` ${
                       values.deckImage ? "hidden" : ""
                     } text-transparent pl-1 py-1  text-xs md:text-base lg:text-xl transition-all   `}
                   >
-                    sfsfsfs
+                    dummy
                   </label>
 
                   <button
                     className={` ${
                       values.deckImage
                         ? "px-0  hover:bg-transparent w-24 sm:w-36 md:w-36 h-auto py-0 "
-                        : "w-28 px-2 py-1"
-                    } border border-blue-500 group shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] flex space-x-1 bg-blue-500   hover:bg-blue-900  transition-all outline-none hover:border-1     items-center self-stretch `}
+                        : "w-16 md:w-24 lg:w-28 px-2 py-1"
+                    } border border-blue-500 group shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] flex space-x-1 bg-blue-500   hover:bg-blue-900  transition-all outline-none hover:border-1     items-center  `}
                     disabled={isSubmitting}
                     type="button"
                     onClick={() => {
@@ -148,11 +152,11 @@ function CreateFlashCard() {
                       />
                     )}
                     {!values.deckImage && (
-                      <span className="flex  ">
+                      <span className="flex flex-row text-center items-center justify-center ">
                         <span className="pt-[3px] text-xs md:text-base lg:text-xl mx-[1%]  text-white     ">
                           <FiUpload></FiUpload>
                         </span>
-                        <span className="text-[12px] md:text-base lg:text-lg    text-white   ">
+                        <span className="text-xs md:text-base lg:text-lg    text-white   ">
                           Upload
                         </span>
                       </span>
@@ -164,7 +168,8 @@ function CreateFlashCard() {
                 <div className="groupName  flex flex-col px-[0.2%] py-[0.2%] mx-1  my-1  transition-all basis-[80%] md:basis-[60%]">
                   {/* description label */}
                   <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all    ml-1">
-                    Group Description <span className=" text-red-500  md:text-lg   ">*</span>
+                    Group Description{" "}
+                    <span className=" text-red-500  md:text-lg   ">*</span>
                   </label>
 
                   {/*  group description input */}
@@ -230,7 +235,9 @@ function CreateFlashCard() {
                         <div className="  basis-[40%] lg:basis-[25%] flex flex-col px-[0.5%]   py-[0.5%]    overflow-hidden ">
                           <label className="pl-1 py-1 text-xs md:text-base lg:text-xl transition-all   ">
                             Term Name{" "}
-                            <span className=" text-red-500  md:text-lg   ">*</span>
+                            <span className=" text-red-500  md:text-lg   ">
+                              *
+                            </span>
                           </label>
 
                           <Field name={`Terms[${index}].Term`}>
@@ -257,7 +264,9 @@ function CreateFlashCard() {
                         <div className=" basis-[60%] lg:basis-[50%]   flex-col  hidden  lg:flex  pl-[3%] py-[0.5%]     ">
                           <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all   ">
                             Term Definition{" "}
-                            <span className=" text-red-500  md:text-lg   ">*</span>
+                            <span className=" text-red-500  md:text-lg   ">
+                              *
+                            </span>
                           </label>
                           <Field
                             as="textarea"
@@ -364,9 +373,7 @@ function CreateFlashCard() {
                                 : ``
                             }  text-transparent pl-1 py-1  text-xs md:text-base lg:text-xl transition-all   `}
                           >
-                            <span className=" text-transparent   ">
-                              *
-                            </span>
+                            <span className=" text-transparent   ">*</span>
                           </label>
 
                           <button
@@ -433,7 +440,11 @@ function CreateFlashCard() {
                           </div>
 
                           <button
-                            className={`${values.Terms[index].image?"":" bg-blue-500  borderborder-blue-500 hover:bg-blue-900 "} px-[2%] py-[2%] mx-1 my-1 w-24 sm:w-36 md:w-36   flex justify-center items-center   transition-all `}
+                            className={`${
+                              values.Terms[index].image
+                                ? ""
+                                : " bg-blue-500  borderborder-blue-500 hover:bg-blue-900 "
+                            } px-[2%] py-[2%] mx-1 my-1 w-24 sm:w-36 md:w-36   flex justify-center items-center   transition-all `}
                             onClick={() => {
                               fileRefs.current[index].click();
                               if (values.Terms[index].image) {
@@ -475,7 +486,9 @@ function CreateFlashCard() {
                         <div className="  basis-[90%]  flex flex-col   lg:hidden ml-[2%] sm:ml-[3%] pl-[3%] py-[0.5%]     sm:pl-[1%]  ">
                           <label className="pl-1 py-1  text-xs md:text-base lg:text-xl transition-all   ">
                             Term Definition{" "}
-                            <span className=" text-red-500  md:text-lg  ">*</span>
+                            <span className=" text-red-500  md:text-lg  ">
+                              *
+                            </span>
                           </label>
                           <Field
                             as="textarea"
@@ -527,7 +540,7 @@ function CreateFlashCard() {
                       <button
                         className=" ml-[2%] mx-1 my-1  px-[0.4%] py-[0.4%] text-blue-500   text-[12px]  hover:scale-[120%] md:text-base lg:text-xl transition-all duration-250   -110   hover:text-blue-700 "
                         type="button"
-                        id='addMore'
+                        id="addMore"
                         onClick={() => {
                           push({ Term: "", definition: "", image: null });
                         }}

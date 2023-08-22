@@ -56,7 +56,7 @@ const MyFlashCards = () => {
             {
               !deck.deckImage&&<PreviewImage
               className="Group Name w-32 h-32 sm:w-36 md:w-44 px-1 py-1 mx-1 my-1 rounded-full  border border-1 border-blue-700  "
-              file={"dummy.png"}
+              file={deck.Terms[0].image}
             ></PreviewImage>
             }
             <div className="Group Name px-1 py-1 mx-1 my-1 text-base  sm:text-xl  md:text-xl font-bold relative ">{deck.Group.slice(0,50)}</div>
