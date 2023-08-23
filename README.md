@@ -1,11 +1,11 @@
 # FlashKrew
 
-FlashKrew is an interative flashcard generator application, where users can create a deck of flashcards, store and view them at a later point in time locally.
-This project is powered by React JS, Redux and Tailwind CSS,Formik, react-routerd-dom ,Formik and Jest
+FlashKrew is an interactive flashcard generator web application, where users can create a deck of flashcards, store and view them at a later point in time locally.
+This project is powered by React JS, Redux and Tailwind CSS,Formik, react-routerd-dom  and Jest
 
 ## Directory💠
 
-We have split the project's src folder into Components, Store and UI for ease of management and modularity.
+We have split the project's src folder into Components, Store and UI and test for ease of management and modularity.
 
 ## App.js
 
@@ -22,8 +22,8 @@ HomePage contains the web app header "FlashKrew" with a nav bar for createflashc
 By default the outler renders the below createflashcard page because of the router configurations
 
 **CreateFlashCard**
-The major page in the whole app, where we actually use Formik library to add Forms for Flash card deck creation
-Form Handles the below things
+The major page in the whole app, where we actually use Formik library to add Forms for Flash card deck creation. 
+Handles the below things
 
 1. Accept User input for Group name , Description and Group Image
 2. Accept user input for Term Name(card name), term description and Term image, multiple such terms can be added to one group
@@ -59,16 +59,22 @@ Acts as a wrapper element to render images with img elements
 
 This component uses react portal to open up a modal for sharing the deck link and uses the respective module.css file
 
+**Card.js**
+This component acts as a simple div wrapper
 
 
-## test Folder
+
+
+
+
+
+## Test Folder
  Contains test files for the App components
 
 # Built with
 
 <a href='https://react.dev/' ><img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB"  height="25" alt='react'></a>
 <a href='https://redux.js.org/' ><img src="https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white"  height="25"></a>
-<a href='https://tailwindcss.com/' ><img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white"  height="25"></a>
 <a href='https://tailwindcss.com/' ><img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white"  height="25"></a>
 
 ## Deployed on
