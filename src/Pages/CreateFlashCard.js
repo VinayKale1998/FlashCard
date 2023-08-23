@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRef } from "react";
 import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
@@ -11,6 +11,7 @@ import { deckActions } from "../Store";
 import { FiUpload } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { BiEdit } from "react-icons/bi";
+import DeckCreatedModal from "../Components/DeckCreatedModal";
 //using yup library for formik validations
 
 //intital state for the Formik form with Group referring to deck name and terms referring to array of term flashcards
@@ -34,6 +35,10 @@ function CreateFlashCard() {
   //dispatch to dispatch actions for storing state in redux
   const dispatch = useDispatch();
 
+  //state used to render the modal after deck creation
+
+  const[created,setCreated] = useState(false)
+
   return (
     <div className="createFlashCard flex flex-col">
       <div className="Heading my-4 py-1 px-1 mx-auto ml-[28%] sm:ml-[35%]  transition-all cursor-pointer">
@@ -48,9 +53,19 @@ function CreateFlashCard() {
         initialValues={initialState}
         //handling the form submit with formik, dispatching an action to redux store and resetting the form
         onSubmit={(values, { resetForm }) => {
+
+          
           console.log("inside formk submit");
           dispatch(deckActions.deckDetailsAdd(values));
           resetForm();
+
+          //setting the state for created
+          setCreated(true);
+
+          setTimeout(()=>{
+            setCreated(prev=>!prev)
+          },2000)
+          //removing the created modal after 2 seconds
         }}
         //validating user inputs with yup library
         validationSchema={Yup.object({
@@ -82,6 +97,7 @@ function CreateFlashCard() {
         {/* using render props method to render a formik form */}
         {({
           values,
+          errors,
           isSubmitting,
           setFieldValue,
           setFieldError,
@@ -463,7 +479,7 @@ function CreateFlashCard() {
                         </div>
                       ))}
 
-                      {/* addmore button */}
+                      {/* addmore button used to add  more terms into the field array list  */}
                       <div>
                         <button
                           className=" ml-[2%] mx-1 my-1  px-[0.4%] py-[0.4%] text-blue-500   text-[12px]  hover:scale-[120%] md:text-base lg:text-xl transition-all duration-250   -110   hover:text-blue-700 "
@@ -481,6 +497,7 @@ function CreateFlashCard() {
                 </FieldArray>
 
                 <div>
+                  {/* used to visualize the formik realtime state updation  */}
                   {/* <pre>{JSON.stringify({ values, errors }, null, 4)}</pre> */}
                   <button
                     type="submit"
@@ -488,6 +505,9 @@ function CreateFlashCard() {
                   >
                     Create
                   </button>
+                  {
+                    created&&<DeckCreatedModal></DeckCreatedModal>
+                  }
                 </div>
               </div>
             </div>

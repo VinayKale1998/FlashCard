@@ -7,10 +7,10 @@ import store from "./Store/index";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+
+  //provider used to wrap the whole app with the redux state access
   <Provider store={store}>
     <App />
   </Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))

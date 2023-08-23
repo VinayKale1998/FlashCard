@@ -6,6 +6,12 @@ import MyFlashCards from "./Pages/MyFlashCards";
 import FlashCard from "./Pages/FlashCard";
 
 
+
+
+// Contains code for route configurations for react-router-dom and renders the RouterProvider , has an Errorpage to handle incorrect paths by the user
+//contains HomePage, CreateFlashCard page ,myFlashCards page, FlashCard Page and Error page
+ 
+
 function App() {
   const router = createBrowserRouter([
     
@@ -13,6 +19,7 @@ function App() {
       path:'/', element:<HomePage></HomePage>, errorElement:<ErrorPage></ErrorPage>
       , children: [
         {
+          //create flashcard defaults for the outlet of homepage 
           index: true,
           element: <CreateFlashCard></CreateFlashCard>,
         },
@@ -30,7 +37,7 @@ function App() {
     }
   
   ]);
-
+//routerProvider called with router as the attribute
   return  <RouterProvider router={router}></RouterProvider>;
 }
 

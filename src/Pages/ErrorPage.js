@@ -2,6 +2,10 @@ import React from "react";
 
 import { NavLink } from "react-router-dom";
 
+
+//ErrorPage is bound as a fallback in the router configuration to ensure when the user enters an inavlid route upon the base route, the user is redirected to this page,
+// contains link to the Create FlashCard Page and MyFlashcards Page
+
 function ErrorPage() {
   return (
     <div className="Create FlashCard Page ">
