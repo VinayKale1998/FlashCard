@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 
 import React from "react";
-import PreviewImage from "../Components/PreviewImage";
+import PreviewImage from "../UI-Components/PreviewImage";
 
 
 // This page renders a list of Groups(decks) if created by the user 
