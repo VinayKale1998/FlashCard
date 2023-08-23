@@ -1,6 +1,6 @@
 import React from "react";
-import CreateFlashCard from "./CreateFlashCard";
-import { Link, NavLink } from "react-router-dom";
+
+import { NavLink } from "react-router-dom";
 
 function ErrorPage() {
   return (
@@ -43,7 +43,7 @@ function ErrorPage() {
 
       <div className="flex flex-col h-[100vh] items-center pt-[10%]">
         <h1 className="sm:text-xl ml-10 md:text-3xl font-bold ">
-          Page Not found! &nbsp;    Please use the below links
+          Page Not found! &nbsp; Please use the below links
         </h1>
         <div className="mx-1 mt-5 flex border border-1  border-blue-500 rounded-md">
           <NavLink
@@ -56,7 +56,9 @@ function ErrorPage() {
           </NavLink>
           <NavLink
             to="/MyFlashCards"
-            className={" flex text-lg font-sans scale-105 text-blue-600 sm:text-1xl  md:text-2xl  mx-3 my-1  hover:text-blue  transition-all  hover:scale-110" }
+            className={
+              " flex text-lg font-sans scale-105 text-blue-600 sm:text-1xl  md:text-2xl  mx-3 my-1  hover:text-blue  transition-all  hover:scale-110"
+            }
           >
             My FlashCards
           </NavLink>
