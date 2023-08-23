@@ -1,7 +1,7 @@
 # FlashKrew
 
 FlashKrew is an interactive flashcard generator web application, where users can create a deck of flashcards, store and view them at a later point in time locally.
-This project is powered by React JS, Redux and Tailwind CSS,Formik, react-routerd-dom  and Jest
+This project is powered by React JS, Redux , Tailwind CSS,Formik,Yup react-routerd-dom  and Jest
 
 ## Directory💠
 
