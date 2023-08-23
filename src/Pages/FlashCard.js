@@ -98,9 +98,9 @@ function FlashCard() {
                 {decks[index].Group}
               </div>
 
-              <div className="Group Name   my-2   text-sm  md:text-md lg:text-lg xl:text-xl transition-all overflow-hidden">
+              <div className="Group Name   my-2   text-sm  md:text-md lg:text-lg xl:text-xl transition-all overflow-auto">
                 <span className="font-bold">Description : </span>{" "}
-                {decks[index].Description.slice(0, 100)}
+                {decks[index].Description.slice(0, 200)}
               </div>
             </section>
           </div>
@@ -181,14 +181,14 @@ function FlashCard() {
                     </div>
                   ))}
                 {turnCard && (
-                  <div className=" relative min-w-[100%] flex-col space-y-1 max-w-[100%] border border-1    min-h-[30vh] sm:min-h-[60vh]  flex items-center  justify-center max-h-[30vh] sm:max-h-[60vh]  border-blue-700 rounded-md overflow-hidden">
-                    <div className="border border-1 border-blue-400 flex flex-col w-auto px-2 py-2 max-w-[60%]  rounded-md overflow-hidden">
-                      <span className=" px-1 py-1   text-xs sm:text-lg md:text-lg lg:text-lg xl:text-xl overflow-hidden">
-                        Term :{" "}
+                  <div className=" relative min-w-[100%] flex-col space-y-1 max-w-[100%] border border-1  bg-blue-100  min-h-[30vh] sm:min-h-[60vh]  flex items-center  justify-center max-h-[30vh] sm:max-h-[60vh]  border-blue-700 rounded-md overflow-auto">
+                    <div className="border border-1 bg-white border-blue-400 flex flex-col w-auto px-2 py-2 max-w-[60%]  rounded-md  overflow-auto">
+                      <span className=" px-1 py-1   text-xs sm:text-lg md:text-lg lg:text-lg xl:text-xl  overflow-auto">
+                      <span className=" text-blue-700 font-bold">Term : </span>
                         {decks[index].Terms[currentTerm].Term.slice(0, 20)}
                       </span>
-                      <span className=" px-1 py-1   text-xs sm:text-lg md:text-lg lg:text-lg xl:text-xl overflow-hidden">
-                        Definition :{" "}
+                      <span className=" px-1 py-1    text-xs sm:text-lg md:text-lg lg:text-lg xl:text-xl  overflow-auto">
+                        <span className="text-blue-700 font-bold">Definition: </span>
                         {decks[index].Terms[currentTerm].definition.slice(
                           0,
                           100
