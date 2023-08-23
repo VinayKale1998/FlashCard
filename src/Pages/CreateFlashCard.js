@@ -64,8 +64,8 @@ function CreateFlashCard() {
 
           setTimeout(()=>{
             setCreated(prev=>!prev)
-          },2000)
-          //removing the created modal after 2 seconds
+          },3000)
+          //removing the created modal after 3 seconds
         }}
         //validating user inputs with yup library
         validationSchema={Yup.object({
@@ -395,13 +395,9 @@ function CreateFlashCard() {
                               type="button"
                             >
                               {values.Terms[index].image && (
-                                // <PreviewImage
-                                //   file={url.image}
-                                //   className="  w-full object-cover object-center h-14 sm:h-16 md:h-20 lg:h-24 transition-all"
-                                // ></PreviewImage>
-
+                               
                                 <PreviewImage
-                                  className="  w-full object-cover object-center  transition-all "
+                                  className="  w-full object-cover object-center  transition-all border border-1 border-blue-600 "
                                   file={values.Terms[index].image}
                                 />
                               )}

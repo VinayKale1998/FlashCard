@@ -20,15 +20,17 @@
   .header {
     background: #43b1e8;
     padding: 1rem;
+    color:white
   }
   
   .header h2 {
     margin: 0;
-    color: white;
+   
   }
   
   .content {
     padding: 1rem;
+
   }
   
   .actions {
