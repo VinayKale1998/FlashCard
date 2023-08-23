@@ -55,7 +55,7 @@ function CreateFlashCard() {
         onSubmit={(values, { resetForm }) => {
 
           
-          console.log("inside formk submit");
+          // console.log("inside formk submit");
           dispatch(deckActions.deckDetailsAdd(values));
           resetForm();
 
@@ -170,7 +170,7 @@ function CreateFlashCard() {
 
                             reader.readAsDataURL(event.target.files[0]);
                             reader.onload = () => {
-                              console.log("inside deck onload");
+                              // console.log("inside deck onload");
                               setFieldValue(`deckImage`, reader.result);
                             };
                           }
@@ -337,8 +337,8 @@ function CreateFlashCard() {
 
                                     reader.readAsDataURL(event.target.files[0]);
                                     reader.onload = () => {
-                                      console.log("inside load");
-                                      console.log(reader.result);
+                                      // console.log("inside load");
+                                      // console.log(reader.result);
                                       setFieldValue(
                                         `Terms[${index}].image`,
                                         reader.result
@@ -440,37 +440,7 @@ function CreateFlashCard() {
                               className=" text-red-500 md:text-md text-[10px] text-xs sm:text-sm"
                             ></ErrorMessage>
 
-                            {/* termImage input hidden  */}
-                            {/* <input
-                              hidden
-                              ref={(element) =>
-                                (fileRefs.current[index] = element)
-                              }
-                              type="file"
-                              accept=".png,.jpeg,.jpg,.jpeg"
-                              onChange={(event) => {
-                                if (event.target.files[0]) {
-                                  if (event.target.files[0].size > 1097152) {
-                                    alert(
-                                      "Term Image size is greater than 1 mb"
-                                    );
-                                  }
-                                  if (event.target.files[0].size < 1097152) {
-                                    const reader = new FileReader();
-
-                                    reader.readAsDataURL(event.target.files[0]);
-                                    reader.onload = () => {
-                                      console.log("inside load");
-                                      // console.log(reader.result);
-                                      setFieldValue(
-                                        `Terms[${index}].image`,
-                                        reader.result
-                                      );
-                                    };
-                                  }
-                                }
-                              }}
-                            ></input> */}
+                           
                           </div>
                         </div>
                       ))}

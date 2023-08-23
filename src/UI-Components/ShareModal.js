@@ -25,7 +25,7 @@ const OverLay = (props) => {
 
   //uses window object and navigator to copy the link into the clipboard for the user upon copy button click 
   const printCurrent = (event) => {
-    console.log(event.target.innerHTML);
+    // console.log(event.target.innerHTML);
     const URL = window.location.href;
     navigator.clipboard.writeText(URL);
     setSelection(true);

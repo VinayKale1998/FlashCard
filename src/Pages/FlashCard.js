@@ -39,7 +39,7 @@ function FlashCard() {
   //handling left scroll of the carousel to scroll using the cliendwidth property and scrollLeft property of the current object
   const leftScroll = () => {
     const width = carouselRef.current.clientWidth;
-    console.log(width);
+    // console.log(width);
     carouselRef.current.scrollLeft = carouselRef.current.scrollLeft - width;
     setTerm((prevterm) => {
       if (prevterm === 0) {
@@ -58,7 +58,7 @@ function FlashCard() {
     });
 
     const width = carouselRef.current.clientWidth;
-    console.log(width);
+    // console.log(width);
     carouselRef.current.scrollLeft = carouselRef.current.scrollLeft + width;
   };
 
@@ -69,7 +69,7 @@ function FlashCard() {
 
   //using blob to provide download option to the user for downloading the viewing deck
   const handleDownload = () => {
-    console.log("inside download");
+    // console.log("inside download");
     const file = new Blob(
       localStorage.getItem("Decks") ? [localStorage.getItem("Decks")] : [" "],
       {
@@ -123,7 +123,7 @@ function FlashCard() {
                   onClick={() => {
                     setTerm(index);
                     const width = carouselRef.current.clientWidth;
-                    console.log(width);
+                    // console.log(width);
                     carouselRef.current.scrollLeft = width * index;
                   }}
                 >
