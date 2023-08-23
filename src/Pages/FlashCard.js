@@ -7,8 +7,8 @@ import { BiShareAlt } from "react-icons/bi";
 import { BiRightArrow } from "react-icons/bi";
 import { BiLeftArrow } from "react-icons/bi";
 
-import PreviewImage from "../Components/PreviewImage";
-import ShareModal from "../Components/ShareModal";
+import PreviewImage from "../UI/PreviewImage";
+import ShareModal from "../UI/ShareModal";
 
 //using saveAs to facilitate download for the user
 import { saveAs } from "file-saver";

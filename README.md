@@ -13,18 +13,6 @@ Contains code for route configurations for react-router-dom and renders the Rout
 
 This app uses a total of Five pages:- **HomePage**, **CreateFlashCard page** ,**MyFlashCards page**, **FlashCard Page** and **Error page**
 
-## Components Folder
-
-**Error.js**
-Renders the error element for Formik form errors used in createFlashcard page
-
-**PreviewImage.js**
-Acts as a wrapper element to render images with img elements
-
-**ShareModal.js**
-
-This component uses react portal to open up a modal for sharing the deck link and uses the respective module.css file
-
 
 
 ## Pages Folder
@@ -58,6 +46,19 @@ This page renders the expansion of the selected Groups by rendering the term det
 Contains the configuration for the Redux store which uses @reduxjs/toolkit , deckSlice created to maintain state of the added decks
 
 Handles deck addition and keeps the localstorage in sync with the state using the reducer functions
+
+## UI Folder
+
+**Error.js**
+Renders the error element for Formik form errors used in createFlashcard page
+
+**PreviewImage.js**
+Acts as a wrapper element to render images with img elements
+
+**ShareModal.js**
+
+This component uses react portal to open up a modal for sharing the deck link and uses the respective module.css file
+
 
 
 ## test Folder

@@ -4,14 +4,14 @@ import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 
-import Error from "../Components/Error";
-import PreviewImage from "../Components/PreviewImage";
+import Error from "../UI/Error";
+import PreviewImage from "../UI/PreviewImage";
 import { deckActions } from "../Store";
 
 import { FiUpload } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { BiEdit } from "react-icons/bi";
-import DeckCreatedModal from "../Components/DeckCreatedModal";
+import DeckCreatedModal from "../UI/DeckCreatedModal";
 //using yup library for formik validations
 
 //intital state for the Formik form with Group referring to deck name and terms referring to array of term flashcards
