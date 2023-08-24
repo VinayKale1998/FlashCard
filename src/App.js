@@ -3,7 +3,7 @@ import CreateFlashCard from "./Pages/CreateFlashCard";
 import ErrorPage from "./Pages/ErrorPage";
 import HomePage from "./Pages/HomePage";
 import MyFlashCards from "./Pages/MyFlashCards";
-import FlashCard from "./Pages/FlashCard";
+import FlashCard from "./Pages/FlashCards";
 
 
 

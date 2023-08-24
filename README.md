@@ -37,7 +37,7 @@ contains link to the Create FlashCard Page and MyFlashcards Page
 **MyFlashCards Page**
 This page renders a list of Groups(decks) if created
 
-**FlashCard**
+**FlashCards**
 This page renders the expansion of the selected Groups by rendering the term details using a carousel for images and allows user to download and share the current deck
 
 ## Store Folder

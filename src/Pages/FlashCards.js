@@ -15,7 +15,7 @@ import { saveAs } from "file-saver";
 
 // This page renders the expansion of the selected Group(deck) by rendering the term details using a  custom carousel for images and allows user to download and share the current deck
 
-function FlashCard() {
+function FlashCards() {
   //getting the  index of the deck  from the window location for displaying the respective deck
   const params = useParams();
   const index = params.index;
@@ -286,4 +286,4 @@ function FlashCard() {
   );
 }
 
-export default FlashCard;
+export default FlashCards;
