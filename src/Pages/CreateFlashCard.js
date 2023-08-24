@@ -37,7 +37,7 @@ function CreateFlashCard() {
 
   //state used to render the modal after deck creation
 
-  const[created,setCreated] = useState(false)
+  const[created,setCreated] = useState(false);
 
   return (
     <div className="createFlashCard flex flex-col">

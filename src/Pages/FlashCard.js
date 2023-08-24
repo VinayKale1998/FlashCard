@@ -87,7 +87,7 @@ function FlashCard() {
           {/* rendering the group information , group name and group description and also a back button which goes to the myflashcard page */}
           <div className="text-3xl flex ml-5 mt-4">
             {/* using link with relative back path which leads to myflashcard page */}
-            <Link to=".." relative="path " className="hidden md:block">
+            <Link to=".." relative="path" className="hidden md:block">
               <BiArrowBack></BiArrowBack>
             </Link>
 
