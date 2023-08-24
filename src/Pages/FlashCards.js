@@ -92,7 +92,7 @@ function FlashCards() {
             </Link>
 
             {/* Deck name and description */}
-            <section className=" space-y-0  px-1 py-1 group-desc my-1  mx-2 flex flex-col h-[10vh] md:h-[13vh] justify-center ml-[10vw] md:ml-[18vw] max-w-[80%] md:max-w-[48%]  ">
+            <section className=" space-y-0  px-1 py-1 group-desc   mx-2 flex flex-col min-h-[16vh] md:h-[16vh] justify-center ml-[10vw] md:ml-[18vw] max-w-[80%] md:max-w-[48%]  ">
               <div className="Group Name   text-sm md:text-md lg:text-lg xl:text-xl transition-all static  flex  items-center   ">
                 <span className=" font-bold">Deck : </span>
                 {decks[index].Group}
@@ -107,7 +107,7 @@ function FlashCards() {
 
           <section className="Deck display flex flex-row my-1 mx-2 ml-4 ">
             {/*  rendering the list of terms using map into buttons which when clicked will go the respective image in the carousel */}
-            <div className="flashcards rounded-lg hidden md:flex shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px] w-[15%] mx-2 my-2    flex-col items-center space-y-2 text-xs md:text-md lg:text-lg xl:text-xl transition-all">
+            <div className="flashcards rounded-lg hidden md:flex shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px] w-[15%] mx-2 my-    flex-col items-center space-y-2 text-xs md:text-md lg:text-lg xl:text-xl transition-all">
               <h1 className="mt-2 text-md md:text-lg lg:text-2xl  mb-2  font-bold border border-b-4 border-blue-600 border-l-0 border-r-0 border-t-0 w-full text-center">
                 {" "}
                 FlashCards
