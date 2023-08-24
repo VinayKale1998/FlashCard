@@ -92,7 +92,7 @@ function FlashCard() {
             </Link>
 
             {/* Deck name and description */}
-            <section className=" space-y-0  px-1 py-1 group-desc my-1  mx-2 flex flex-col h-[10vh] md:h-[13vh] justify-center ml-[10vw] md:ml-[18vw] ">
+            <section className=" space-y-0  px-1 py-1 group-desc my-1  mx-2 flex flex-col h-[10vh] md:h-[13vh] justify-center ml-[10vw] md:ml-[18vw] max-w-[80%] md:max-w-[48%]  ">
               <div className="Group Name   text-sm md:text-md lg:text-lg xl:text-xl transition-all static  flex  items-center   ">
                 <span className=" font-bold">Deck : </span>
                 {decks[index].Group}

@@ -64,10 +64,6 @@ This component acts as a simple div wrapper
 
 
 
-
-
-
-
 ## Test Folder
  Contains test files for the App components
 
