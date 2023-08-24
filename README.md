@@ -5,7 +5,7 @@ This project is powered by React JS, Redux , Tailwind CSS,Formik,Yup react-route
 
 ## Directory💠
 
-We have split the project's src folder into Components, Store and UI and test for ease of management and modularity.
+The project's src folder is split into Components, Store and UI and test for ease of management and modularity.
 
 ## App.js
 
