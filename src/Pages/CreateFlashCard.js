@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
-
+import Card from "../UI-Components/Card";
 import Error from "../UI-Components/Error";
 import PreviewImage from "../UI-Components/PreviewImage";
 import { deckActions } from "../Store";
@@ -37,10 +37,10 @@ function CreateFlashCard() {
 
   //state used to render the modal after deck creation
 
-  const[created,setCreated] = useState(false);
+  const [created, setCreated] = useState(false);
 
   return (
-    <div className="createFlashCard flex flex-col">
+    <Card className="createFlashCard flex flex-col">
       <div className="Heading my-4 py-1 px-1 mx-auto ml-[28%] sm:ml-[35%]  transition-all cursor-pointer">
         <h1 className="heading   text-lg sm:text-2xl  md:text-3xl lg:text-3xl  text-blue-600  transition-all  ">
           Create Flash Card
@@ -53,8 +53,6 @@ function CreateFlashCard() {
         initialValues={initialState}
         //handling the form submit with formik, dispatching an action to redux store and resetting the form
         onSubmit={(values, { resetForm }) => {
-
-          
           // console.log("inside formk submit");
           dispatch(deckActions.deckDetailsAdd(values));
           resetForm();
@@ -62,9 +60,9 @@ function CreateFlashCard() {
           //setting the state for created
           setCreated(true);
 
-          setTimeout(()=>{
-            setCreated(prev=>!prev)
-          },3000)
+          setTimeout(() => {
+            setCreated((prev) => !prev);
+          }, 3000);
           //removing the created modal after 3 seconds
         }}
         //validating user inputs with yup library
@@ -154,7 +152,7 @@ function CreateFlashCard() {
                       ref={deckRef}
                       //onChange event for this input field, that is the upload button usage, will cause the file in the target object to be stored in formik state using file reader and setField value method as written below
                       onChange={(event) => {
-                        //max image size allowed is 1mb 
+                        //max image size allowed is 1mb
                         if (event.target.files[0]) {
                           if (event.target.files[0].size > 1097152) {
                             setFieldError(
@@ -314,9 +312,8 @@ function CreateFlashCard() {
                               className=" text-red-500 md:text-md text-[10px] text-xs sm:text-sm"
                             ></ErrorMessage>
 
-
-                      {/* this is a hidden input field for term image upload handling */}
-                    {/* //onChange event for this input field, that is the upload button usage, will cause the file in the target object to be stored in formik 
+                            {/* this is a hidden input field for term image upload handling */}
+                            {/* //onChange event for this input field, that is the upload button usage, will cause the file in the target object to be stored in formik 
                     // state using file reader and setField value method as written below */}
                             <input
                               hidden
@@ -395,7 +392,6 @@ function CreateFlashCard() {
                               type="button"
                             >
                               {values.Terms[index].image && (
-                               
                                 <PreviewImage
                                   className="  w-full object-cover object-center  transition-all border border-1 border-blue-600 "
                                   file={values.Terms[index].image}
@@ -439,8 +435,6 @@ function CreateFlashCard() {
                               component={Error}
                               className=" text-red-500 md:text-md text-[10px] text-xs sm:text-sm"
                             ></ErrorMessage>
-
-                           
                           </div>
                         </div>
                       ))}
@@ -471,16 +465,14 @@ function CreateFlashCard() {
                   >
                     Create
                   </button>
-                  {
-                    created&&<DeckCreatedModal></DeckCreatedModal>
-                  }
+                  {created && <DeckCreatedModal></DeckCreatedModal>}
                 </div>
               </div>
             </div>
           </Form>
         )}
       </Formik>
-    </div>
+    </Card>
   );
 }
 

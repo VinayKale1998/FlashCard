@@ -1,6 +1,7 @@
 import React from "react";
 
 import { NavLink, Outlet } from "react-router-dom";
+import Card from "../UI-Components/Card";
 
 //HomePage contains the web app header "FlashKrew" with a nav bar for createflashcard and myflashcards page, it has a outlet for rendering routes from it
 // By default the outler renders the below createflashcard page because of the router configurations
@@ -8,7 +9,7 @@ import { NavLink, Outlet } from "react-router-dom";
 function HomePage() {
   return (
     <div className="Create FlashCard Page ">
-      <nav className="flex flex-row items-center  justify-between shadow-[5px_5px_0px_0px_rgba(37,99,235)] px-[0.5%] py-[1%]  bg-white">
+      <Card className="flex flex-row items-center  justify-between shadow-[5px_5px_0px_0px_rgba(37,99,235)] px-[0.5%] py-[1%]  bg-white">
         <NavLink
           to="/"
           className="ml-[0.5%] flex font-sans  w-[10%]  text-lg sm:text-3xl  md:text-3xl lg:text-4xl  items-center  transition-all  text-blue-600"
@@ -42,7 +43,7 @@ function HomePage() {
             My FlashCards
           </NavLink>
         </div>
-      </nav>
+      </Card>
 
       {/* route renders here in the outlet */}
       <Outlet></Outlet>
@@ -52,5 +53,5 @@ function HomePage() {
 
 export default HomePage;
 
-// This page renders a list of Groups(decks) if created by the user 
+// This page renders a list of Groups(decks) if created by the user
 //flashcards created is retained upon page reload using locals
