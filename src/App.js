@@ -1,44 +1,51 @@
-import { createBrowserRouter,RouterProvider } from "react-router-dom";
-import CreateFlashCard from "./Pages/CreateFlashCard";
-import ErrorPage from "./Pages/ErrorPage";
-import HomePage from "./Pages/HomePage";
-import MyFlashCards from "./Pages/MyFlashCards";
-import FlashCard from "./Pages/FlashCards";
-
-
-
-
-// Contains code for route configurations for react-router-dom and renders the RouterProvider , has an Errorpage to handle incorrect paths by the user
-//contains HomePage, CreateFlashCard page ,myFlashCards page, FlashCard Page and Error page
- 
+import React, { Suspense } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+const CreateFlashCard = React.lazy(() => import("./Pages/CreateFlashCard"));
+const ErrorPage = React.lazy(() => import("./Pages/ErrorPage"));
+const HomePage = React.lazy(() => import("./Pages/HomePage"));
+const MyFlashCards = React.lazy(() => import("./Pages/MyFlashCards"));
+const FlashCard = React.lazy(() => import("./Pages/FlashCards"));
 
 function App() {
   const router = createBrowserRouter([
-    
     {
-      path:'/', element:<HomePage></HomePage>, errorElement:<ErrorPage></ErrorPage>
-      , children: [
+      path: "/",
+      element: (
+        <Suspense fallback={<div>Loading...</div>}>
+          <HomePage />
+        </Suspense>
+      ),
+      errorElement: <ErrorPage />,
+      children: [
         {
-          //create flashcard defaults for the outlet of homepage 
           index: true,
-          element: <CreateFlashCard></CreateFlashCard>,
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <CreateFlashCard />
+            </Suspense>
+          ),
         },
         {
-          path:'MyFlashCards',
-          element: <MyFlashCards></MyFlashCards>,
+          path: "MyFlashCards",
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <MyFlashCards />
+            </Suspense>
+          ),
         },
-
-
         {
-          path:'MyFlashCards/:index',
-          element:<FlashCard></FlashCard>
-        }
-      ]
-    }
-  
+          path: "MyFlashCards/:index",
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <FlashCard />
+            </Suspense>
+          ),
+        },
+      ],
+    },
   ]);
-//routerProvider called with router as the attribute
-  return  <RouterProvider router={router}></RouterProvider>;
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
